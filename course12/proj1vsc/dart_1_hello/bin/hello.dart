@@ -1,7 +1,7 @@
-import 'package:dart_1_hello/dart_1_hello.dart' as dart_1_hello;
+import 'package:dart_1_hello/hello_calculate.dart' as hello;
 
 void main(List<String> arguments) {
-  print('Hello world: ${dart_1_hello.calculate()}!');
+  print('Hello world: ${hello.calculate()}!');
 
   const myName = 'Fernando';
 

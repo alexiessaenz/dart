@@ -1,4 +1,4 @@
-import 'package:dart_1_hello/dart_1_hello.dart';
+import 'package:dart_1_hello/hello_calculate.dart';
 import 'package:test/test.dart';
 
 void main() {
