@@ -5,12 +5,20 @@ void main(List<String> args){
 
 String callPerson( Persona director){
     return director.toString();
-
 }
 
 abstract class Persona{
     String nombre;
     Persona({required this.nombre});
+}
+
+enum Rol { director, maestro, empleado }
+
+abstract class Empleado extends Persona{
+    Rol rol;
+    Empleado({required String name, required this.rol}):
+    super(nombre: name);
+    void calcularSalario();
 }
 
 class Director extends Persona{
@@ -20,7 +28,7 @@ class Director extends Persona{
 
     @override
   String toString() {
-    return 'Director{'
+    return class.name+'{'
         'nombre: $nombre, '
         'salario: $salario'
         '}';
