@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/course/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/course/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/course/build" />
+      <excludeFolder url="file://$MODULE_DIR$/course12/proj1vsc/dart_1_hello/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/course12/proj1vsc/dart_1_hello/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/course12/proj1vsc/dart_1_hello/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_application_1/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_application_1/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dart_application_1/build" />
+      <excludeFolder url="file://$MODULE_DIR$/hello/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/hello/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/hello/build" />
+      <excludeFolder url="file://$MODULE_DIR$/sesion03/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/sesion03/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/sesion03/build" />
+      <excludeFolder url="file://$MODULE_DIR$/session2/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/session2/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/session2/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

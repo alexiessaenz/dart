@@ -14,6 +14,7 @@ abstract class Persona{
 
 enum Rol { director, maestro, empleado }
 
+<<<<<<< HEAD
 class Empleado extends Persona implements Isalario{
     Rol rol;
     Empleado({required String name, required this.rol}):
@@ -40,13 +41,23 @@ class Isalario{
   }
 }
 class Director extends Persona implements Isalario{
+=======
+abstract class Empleado extends Persona{
+    Rol rol;
+    Empleado({required String name, required this.rol}):
+    super(nombre: name);
+    void calcularSalario();
+}
+
+class Director extends Persona{
+>>>>>>> ee35171aeec979ab91edb4af590cc5e199dce3c4
   double salario;
     Director({required String name})
     : this.salario = 1300, super(nombre: name);
 
     @override
   String toString() {
-    return 'Director{'
+    return class.name+'{'
         'nombre: $nombre, '
         'salario: $salario'
         '}';
