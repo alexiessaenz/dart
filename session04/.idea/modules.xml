@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/session04.iml" filepath="$PROJECT_DIR$/session04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/session05_async_futures_await.iml" filepath="$PROJECT_DIR$/session05_async_futures_await.iml" />
     </modules>
   </component>
 </project>
