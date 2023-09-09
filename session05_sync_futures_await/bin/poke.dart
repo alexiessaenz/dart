@@ -12,7 +12,7 @@ void main(List<String> arguments) async {
   await Future.delayed(new Duration(seconds: 3));
   try{
     int rand = 1 + (new DateTime.now().millisecondsSinceEpoch % 1010);
-    String poke = rand.toString(); //also u can write some known pokemon: pikachu,
+    String poke = rand.toString(); //here also u can write the name of some known pokemon like : pikachu,
                                     // psyduck, charmander, bulbasaur, squirtle, mew, mewtwo, articuno, zapdos
     await httpGet(poke );
   } catch(e){ throw new Exception('Error: $e'); }
