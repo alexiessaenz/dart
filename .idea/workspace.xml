@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="780e62c7-39aa-4fe5-8bf2-2ef1f3f9ea29" name="Changes" comment="" />
+    <list default="true" id="780e62c7-39aa-4fe5-8bf2-2ef1f3f9ea29" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/.idea/libraries/Dart_SDK.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/analysis_options.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/bin/_1async.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/bin/_2tryonException.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/bin/examen_intro_dart.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/bin/poke.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/bin/stream_await.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/bin/streams.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/lib/session04.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/pubspec.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/pubspec.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/session05_async_futures_await.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/session04/test/session04_test.dart" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +33,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2V4ZaFMj0GCkOCTMi0UUnpAo6Vz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,11 +51,23 @@
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Database_fundamental/FirefoxPortable/FirefoxPortable/dartcourse",
+    "last_opened_file_path": "C:/Users/ASUS/OneDrive/IdeaProjects/dartprjz",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="poke.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/session05_sync_futures_await/bin/poke.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/session05_sync_futures_await" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Command Line App.poke.dart" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -39,6 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1694097375956</updated>
       <workItem from="1694097376912" duration="17000" />
+      <workItem from="1694223040991" duration="48000" />
     </task>
     <servers />
   </component>
