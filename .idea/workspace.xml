@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="780e62c7-39aa-4fe5-8bf2-2ef1f3f9ea29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/.idea/libraries/Dart_SDK.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/analysis_options.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/bin/_1async.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/bin/_2tryonException.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/bin/examen_intro_dart.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/bin/poke.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/bin/stream_await.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/bin/streams.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/lib/session04.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/pubspec.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/pubspec.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/session05_async_futures_await.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session04/test/session04_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/session05_sync_futures_await/bin/poke.dart" beforeDir="false" afterPath="$PROJECT_DIR$/session05_sync_futures_await/bin/poke.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +35,10 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/ASUS/OneDrive/IdeaProjects/dartprjz",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
@@ -78,6 +65,7 @@
       <updated>1694097375956</updated>
       <workItem from="1694097376912" duration="17000" />
       <workItem from="1694223040991" duration="48000" />
+      <workItem from="1694232924602" duration="2000000" />
     </task>
     <servers />
   </component>
