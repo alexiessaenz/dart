@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="780e62c7-39aa-4fe5-8bf2-2ef1f3f9ea29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session05_sync_futures_await/bin/poke.dart" beforeDir="false" afterPath="$PROJECT_DIR$/session05_sync_futures_await/bin/poke.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +38,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
@@ -65,7 +65,7 @@
       <updated>1694097375956</updated>
       <workItem from="1694097376912" duration="17000" />
       <workItem from="1694223040991" duration="48000" />
-      <workItem from="1694232924602" duration="2000000" />
+      <workItem from="1694232924602" duration="3139000" />
     </task>
     <servers />
   </component>

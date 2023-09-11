@@ -64,14 +64,47 @@ class Tienda with Informacion {
 
 class Departamento  {
     DepartamentoProducto nombre;
-    List<Categoria> categorias;
-    Departamento({required this.nombre, required this.categorias});
+    List<Categoria> categorias = [];
+    Departamento({required this.nombre, this.categorias = const []});
+
+    //agregar categoria nueva
+    void crearCategoria(Categoria categoria){
+      categorias.add(categoria);
+    }
+
+    //cantidad de articulos en el departamento
+    int cantidadArticulos(){
+      int cantidad = 0;
+      for (Categoria categoria in categorias) {
+        cantidad += categoria.articulos.length;
+      }
+      return cantidad;
+    }
+
+    @override
+  String toString() {
+    return 'Departamento{\nnombre: $nombre, categorias: ${categorias.length}}';
+  }
 }
 
 class Categoria{
 CategoriaProducto nombre;
-  List<Articulo> articulos;
-  Categoria( {required this.nombre, required this.articulos});
+  List<Articulo> articulos= [];
+  Categoria( {required this.nombre, this.articulos= const []});
+
+  //crear articulo nuevo
+  void crearArticulo(Articulo articulo){
+    articulos.add(articulo);
+  }
+  //agregar articulo existente
+  void agregarArticulo(Articulo articulo){
+    articulos.add(articulo);
+  }
+
+@override
+  String toString() {
+    return 'Categoria{\nnombre: $nombre, \ncantidad de articulos: ${articulos.length}}';
+  }
 }
 
 class Articulo with Disponible {
@@ -126,4 +159,11 @@ void main(List<String> args) {
       }
     }
   }
+
+  print('------- prueba --------');
+  print(categoria1);
+  print(categoria2);
+  print(departamento1);
+  print(departamento2);
+  print('------- prueba --------');
 }
