@@ -35,7 +35,7 @@ enum DepartamentoProducto{
   Entretenimiento,
   Otros
 }
-enum Articulos{
+enum Articulosp{
   Teclado,
   Mouse,
   Monitor,
@@ -58,14 +58,33 @@ enum Articulos{
 }
 
 class Tienda with Informacion {
-    List<Departamento> departamentos;
-    Tienda( this.departamentos);
+    var departamentos= <Departamento>{};
+
+
+    //agregar departamento nuevo
+    void crearDepartamento(Departamento departamento){
+      departamentos.add(departamento);
+    }
+
+    //cantidad de articulos en la tienda
+    int cantidadArticulos(){
+      int cantidad = 0;
+      for (Departamento departamento in departamentos) {
+        cantidad += departamento.cantidadArticulos();
+      }
+      return cantidad;
+    }
+
+    @override
+  String toString() {
+    return 'Tienda{\nnombre: $nombre, \ndireccion: $direccion, \ncantidad de departamentos: ${departamentos.length}, \ncantidad de articulos: ${cantidadArticulos()}\n}';
+    }
 }
 
 class Departamento  {
     DepartamentoProducto nombre;
-    List<Categoria> categorias = [];
-    Departamento({required this.nombre, this.categorias = const []});
+    var categorias = <Categoria>{};
+    Departamento({required this.nombre});
 
     //agregar categoria nueva
     void crearCategoria(Categoria categoria){
@@ -76,83 +95,82 @@ class Departamento  {
     int cantidadArticulos(){
       int cantidad = 0;
       for (Categoria categoria in categorias) {
-        cantidad += categoria.articulos.length;
+        categoria.articulos.forEach((element) { cantidad= element.disponible;});
       }
       return cantidad;
     }
 
     @override
   String toString() {
-    return 'Departamento{\nnombre: $nombre, categorias: ${categorias.length}}';
+    return 'Departamento{\nnombre: $nombre, \ncategorias: ${categorias.length}, \ncantidad de articulos: ${cantidadArticulos()}\n}';
   }
 }
 
 class Categoria{
 CategoriaProducto nombre;
-  List<Articulo> articulos= [];
-  Categoria( {required this.nombre, this.articulos= const []});
+  var articulos= <Articulo>{};
+  Categoria( {required this.nombre});
 
-  //crear articulo nuevo
-  void crearArticulo(Articulo articulo){
-    articulos.add(articulo);
-  }
   //agregar articulo existente
   void agregarArticulo(Articulo articulo){
     articulos.add(articulo);
   }
+  //cantidad de articulos en la categoria
+  int cantidadArticulos(){
+    int cantidad = 0;
+    articulos.forEach((element) { cantidad= element.disponible;});
+    return cantidad;
+  }
 
 @override
   String toString() {
-    return 'Categoria{\nnombre: $nombre, \ncantidad de articulos: ${articulos.length}}';
+    return 'Categoria{\nnombre: $nombre, \ncantidad de articulos: ${cantidadArticulos()}\n}';
   }
 }
 
 class Articulo with Disponible {
-    Articulos nombre;
+    Articulosp nombre;
     Articulo({required this.nombre});
 }
 
 void main(List<String> args) {
-  List<Articulo> articulos = [];
-  List<Articulo> articulos2 = [];
-  List<Categoria> categorias = [];
-  List<Departamento> departamentos = [];
-
-  final articulo1 = Articulo(nombre: Articulos.Teclado);
-  articulo1.disponible = 10;
-  final articulo2 = Articulo(nombre: Articulos.Mouse);
-  articulo2.disponible = 20;
-
-  articulos.add(articulo1);
-  articulos.add(articulo2);
-
-  final articulo3 = Articulo(nombre: Articulos.Muebles);
-  articulos2.add(articulo3);
-  final categoria1 = Categoria(nombre: CategoriaProducto.Tecnologia, articulos: articulos);
-  categorias.add(categoria1);
-
-  final categoria2 = Categoria(nombre: CategoriaProducto.Hogar, articulos: articulos2);
-  categorias.add(categoria2);
 
 
-  final departamento1 = Departamento(nombre: DepartamentoProducto.Tecnologia,  categorias: categorias);
-  departamentos.add(departamento1);
 
-  final departamento2 = Departamento(nombre: DepartamentoProducto.Hogar,  categorias: categorias);
-  departamentos.add(departamento2);
-
-  final tienda1 = Tienda( departamentos);
+  final tienda1 = Tienda( );
   tienda1.nombre = 'Tienda de la esquina';
   tienda1.direccion = 'Calle 1 # 2-3';
 
+  final departamento1 = Departamento(nombre: DepartamentoProducto.Tecnologia);
+  final departamento2 = Departamento(nombre: DepartamentoProducto.Hogar);
+
+  tienda1.crearDepartamento(departamento1);
+  tienda1.crearDepartamento(departamento2);
+
+  final categoria1 = Categoria(nombre: CategoriaProducto.Tecnologia);
+  final categoria2 = Categoria(nombre: CategoriaProducto.Hogar);
+
+  departamento1.crearCategoria(categoria1);
+  departamento2.crearCategoria(categoria2);
+
+  final articulo1 = Articulo(nombre: Articulosp.Teclado);
+  articulo1.disponible = 10;
+  final articulo2 = Articulo(nombre: Articulosp.Mouse);
+  articulo2.disponible = 20;
+  final articulo3 = Articulo(nombre: Articulosp.Muebles);
+  articulo3.disponible = 30;
+
+  categoria1.agregarArticulo(articulo1);
+  categoria1.agregarArticulo(articulo2);
+  categoria2.agregarArticulo(articulo3);
 
   //---------- Imprimir datos de la tienda -----------
   print(tienda1.nombre);
   print(tienda1.direccion);
   for (Departamento departamento in tienda1.departamentos) {
-    print(departamento.nombre);
+    print('\n\n${departamento.nombre}');
     for (Categoria categoria in departamento.categorias) {
-      print(categoria.nombre);
+      print('\n${categoria.nombre}');
       for (Articulo articulo in categoria.articulos) {
         print(articulo.nombre);
         print(articulo.disponible);
@@ -160,10 +178,11 @@ void main(List<String> args) {
     }
   }
 
-  print('------- prueba --------');
+  print('\n\n------- Cant de productos por niveles --------');
   print(categoria1);
   print(categoria2);
   print(departamento1);
   print(departamento2);
-  print('------- prueba --------');
+  print(tienda1);
+  print('------- Cant de productos por niveles --------');
 }
