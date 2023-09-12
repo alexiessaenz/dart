@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
+                ), //Container
 
                 Text(
                   'Kandersteg, Switzerland',
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           const Text('41'),
         ],
       ),
-    );
+    ); //Title section container
 
     Color color = Theme.of(context).primaryColor;
 
@@ -87,8 +87,8 @@ class MyApp extends StatelessWidget {
             buttonSection,
             textSection,
           ],
-        )
-      ),
+        ) //ListView
+      ), //Scaffold
 
     );
     
@@ -109,9 +109,9 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: color,
             ),
-          ),
+          ), //Text
         ),
       ],
-    );
+    ); //Column
   }
 }
