@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="780e62c7-39aa-4fe5-8bf2-2ef1f3f9ea29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session05_sync_futures_await/bin/examen_intro_dart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/session05_sync_futures_await/bin/examen_intro_dart.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +56,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Dart Command Line App.examen_intro_dart.dart" />
         <item itemvalue="Dart Command Line App.poke.dart" />
+        <item itemvalue="Dart Command Line App.examen_intro_dart.dart" />
       </list>
     </recent_temporary>
   </component>
@@ -73,7 +72,8 @@
       <workItem from="1694097376912" duration="17000" />
       <workItem from="1694223040991" duration="48000" />
       <workItem from="1694232924602" duration="3139000" />
-      <workItem from="1694408922995" duration="3052000" />
+      <workItem from="1694408922995" duration="4219000" />
+      <workItem from="1694468542174" duration="14000" />
     </task>
     <servers />
   </component>
