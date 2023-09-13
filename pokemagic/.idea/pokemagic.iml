@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/pokeLegacy/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/pokeLegacy/build" />
       <excludeFolder url="file://$MODULE_DIR$/pokeLegacy/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/pokemagic/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/pokemagic/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/pokemagic/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
