@@ -13,6 +13,7 @@ class CounterScreen extends StatelessWidget {
         title: const Text('Counter Screen',
         style: TextStyle(color: Colors.amber),
         ),
+        centerTitle: true,
       ),
       body: Center(
           child: Column(
