@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:si_no_app/presentation/_ChatView.dart';
+import 'package:si_no_app/presentation/widgets/chat/MyMessageBubble.dart' ;
+import 'package:si_no_app/presentation/widgets/chat/MyMessageBubbleOther.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen ({super.key});
@@ -19,7 +21,7 @@ class ChatScreen extends StatelessWidget {
         centerTitle: false,
       ),
       //body bubble messages
-      body: const _ChatView(),
+      body: _ChatView(),
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
@@ -47,7 +49,7 @@ class ChatScreen extends StatelessWidget {
 }
 
 class _ChatView extends StatelessWidget {
-  const _ChatView({super.key}) ;
+  //const _ChatView({super.key}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +59,13 @@ class _ChatView extends StatelessWidget {
             child: Column(
                 children:[
                   Expanded(
-                    child: Container(
-                      color: Colors.blue,
+                    child: ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return (index % 2 == 0)
+                            ? MyMessageBubble()
+                            :  MyMessageBubbleOther();
+                      },
                     ),
                   )
                 ]
@@ -71,12 +78,4 @@ class _ChatView extends StatelessWidget {
   }
 }
 
-class _ChatBubble extends StatelessWidget{
-  const _ChatBubble({super.key}) ;
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-}
