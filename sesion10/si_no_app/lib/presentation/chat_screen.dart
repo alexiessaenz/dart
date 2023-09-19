@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:si_no_app/presentation/_ChatView.dart';
 import 'package:si_no_app/presentation/widgets/chat/MyMessageBubble.dart' ;
 import 'package:si_no_app/presentation/widgets/chat/MyMessageBubbleOther.dart';
+import 'package:si_no_app/presentation/widgets/shared/message_field_box.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen ({super.key});
@@ -22,28 +23,7 @@ class ChatScreen extends StatelessWidget {
       ),
       //body bubble messages
       body: _ChatView(),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.add),
-            ),
-            const Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Escribe un mensaje',
-                ),
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.send),
-            ),
-          ],
-        ),
-      )
+      bottomNavigationBar: MessageFieldBox(),
     );
   }
 }
