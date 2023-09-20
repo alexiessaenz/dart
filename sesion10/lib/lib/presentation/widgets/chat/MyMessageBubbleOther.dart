@@ -79,8 +79,8 @@ class MyMessageBubbleOther extends StatelessWidget {
 }
 
 class _ImageBubble extends StatelessWidget{
-   String? url='';
-  _ImageBubble({ this.url,super.key});
+  final String url;
+  const _ImageBubble({required this.url,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,7 @@ class _ImageBubble extends StatelessWidget{
       borderRadius: BorderRadius.circular(10),
       child: Image.network(
         // 'https://picsum.photos/200/300',
-        url!,
+        url,
         height: 200,
         width: 200,
         fit: BoxFit.cover,
