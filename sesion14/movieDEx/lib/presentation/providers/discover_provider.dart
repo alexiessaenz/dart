@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:moviedex/domain/entities/video_post.dart';
 import 'package:moviedex/infrastructure/models/local_video_model.dart';
 import 'package:moviedex/presentation/providers/chat_provider.dart';
 import 'package:moviedex/shared/data/local_video_posts.dart';
 
-class DiscoverProvider extends ChatProvider{
+class DiscoverProvider extends ChangeNotifier{
   List<VideoPost> videoList = [];
   bool initLoading =true;
 
