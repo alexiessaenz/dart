@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:moviedex/presentation/providers/discover_provider.dart';
+import 'package:provider/provider.dart';
+
 import 'package:moviedex/config/theme/app_theme.dart';
 
 void main(List<String> args){
@@ -9,7 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+        providers: [
+
+        ChangeNotifierProvider(create: (_) => DiscoverProvider()),
+    ],
+    child: MaterialApp(
       title: 'My PelixFlix2',
       debugShowCheckedModeBanner: false,
       theme: appTheme().getTheme(),
@@ -22,7 +30,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-    );
+    ));
   }
 }
 
@@ -48,7 +56,11 @@ class myHomePage extends StatelessWidget{
       body: const Center(
         child: Text('Hello World'),
       ),
-      bottomNavigationBar: const BottomAppBar(
+
+      bottomNavigationBar: BottomAppBar(
+        surfaceTintColor: Colors.transparent,
+        color: Colors.white,
+
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

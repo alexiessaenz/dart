@@ -11,4 +11,4 @@ List<Map<String,dynamic>> videoPosts = [
     'views' : 0,
   },
 
-]
+];
