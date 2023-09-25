@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../domain/entities/message.dart';
 class MyMessageBubbleOther extends StatelessWidget {
   final Message message;
-  MyMessageBubbleOther({
+  const MyMessageBubbleOther({
     required this.message,
     super.key});
 
@@ -40,9 +40,9 @@ class MyMessageBubbleOther extends StatelessWidget {
 
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: Text(message.text,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
               ),
             ),
@@ -80,7 +80,7 @@ class MyMessageBubbleOther extends StatelessWidget {
 
 class _ImageBubble extends StatelessWidget{
    String? url='';
-  _ImageBubble({ this.url,super.key});
+  _ImageBubble({ this.url});
 
   @override
   Widget build(BuildContext context) {

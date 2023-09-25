@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moviedex/config/theme/app_theme.dart';
-import 'package:moviedex/presentation/widgets/shared/message_field_box.dart';
 
 void main(List<String> args){
   runApp(const MyApp());
@@ -28,14 +27,14 @@ class MyApp extends StatelessWidget {
 }
 
 class myHomePage extends StatelessWidget{
-  const myHomePage();
+  const myHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
 
-        title:  Text('My PelixFlix2'),
+        title:  const Text('My PelixFlix2'),
         actions: const [
           Icon(Icons.search),
           SizedBox(width: 13,),
@@ -49,10 +48,10 @@ class myHomePage extends StatelessWidget{
       body: const Center(
         child: Text('Hello World'),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
+          children: [
             SizedBox(width: 13,),
             Icon(Icons.home,),
             SizedBox(width: 13,),

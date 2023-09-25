@@ -15,7 +15,7 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const Padding(
-          padding:  const EdgeInsets.all(3.0),
+          padding:  EdgeInsets.all(3.0),
           child: CircleAvatar(
               backgroundImage: NetworkImage(
                   'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'),
