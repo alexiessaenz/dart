@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:moviedex/domain/entities/video_post.dart';
 import 'package:moviedex/presentation/widgets/shared/video_buttons.dart';
 
@@ -20,6 +19,10 @@ class VideoScrollableView extends StatelessWidget {
 
       return Stack(
         children: [
+          SizedBox.expand(
+            child: Container(color: Colors.amber),
+          ),
+
           Positioned(
             bottom:40,
             right: 20,

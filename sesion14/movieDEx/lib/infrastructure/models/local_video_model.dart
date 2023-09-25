@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:moviedex/domain/entities/video_post.dart';
 class LocalVideoModel {
   final String name;

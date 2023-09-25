@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     child: MaterialApp(
       title: 'My PelixFlix2',
       debugShowCheckedModeBanner: false,
-      theme: appTheme().getTheme(),
+      theme: AppTheme().getTheme(),
       // theme: ThemeData(
       //   useMaterial3: true,
       //   brightness: Brightness.light,
@@ -57,7 +57,7 @@ class myHomePage extends StatelessWidget{
         child: Text('Hello World'),
       ),
 
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
         surfaceTintColor: Colors.transparent,
         color: Colors.white,
 

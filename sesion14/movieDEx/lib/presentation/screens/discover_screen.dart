@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviedex/presentation/providers/discover_provider.dart';
-import 'package:moviedex/presentation/widgets/shared/discover_provider.dart';
+import 'package:moviedex/presentation/widgets/shared/video_scrollable_view.dart';
 import 'package:provider/provider.dart';
 
 class DiscoverScreen extends StatelessWidget {
@@ -8,23 +8,23 @@ class DiscoverScreen extends StatelessWidget {
 
   @override
   Widget build (BuildContext context){
-  const discoverProvider = context.watch<DiscoverProvider>();
+  var discoverProvider = context.watch<DiscoverProvider>(); //watch<DiscoverProvider>();
 
     return Scaffold(
-      appBar: AppBar(
-        leading: const Padding(
-          padding:  EdgeInsets.all(3.0),
-          child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'),
-          ),
-        ),
-        title: const Text('Juan Perez'),
-        centerTitle: false,
-      ),
+      // appBar: AppBar(
+      //   leading: const Padding(
+      //     padding:  EdgeInsets.all(3.0),
+      //     child: CircleAvatar(
+      //         backgroundImage: NetworkImage(
+      //             'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'),
+      //     ),
+      //   ),
+      //   title: const Text('Juan Perez'),
+      //   centerTitle: false,
+      // ),
       //body bubble messages
       body: discoverProvider.initLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator(strokeWidth: 2,))
           : VideoScrollableView(videoList: discoverProvider.videoList),
       // bottomNavigationBar: MessageFieldBox(),
     );

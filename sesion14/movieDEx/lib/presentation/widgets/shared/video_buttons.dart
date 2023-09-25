@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:moviedex/config/theme/helpers/formats.dart';
 import 'package:moviedex/domain/entities/video_post.dart';
 
 class VideoButtons extends StatelessWidget {
@@ -10,7 +12,14 @@ class VideoButtons extends StatelessWidget {
     return  Column(
       children: [
         _CustomIconButton(value: video.likes, iconData: Icons.favorite, iconColor: Colors.red),
-        _CustomIconButton(value: video.views, iconData: Icons.remove_red_eye_outlined, iconColor: Colors.red)
+        const SizedBox(height: 20,),
+        _CustomIconButton(value: video.views, iconData: Icons.remove_red_eye_outlined, iconColor: Colors.red),
+        const SizedBox(height: 20,),
+        
+        SpinPerfect(
+          infinite: true,
+          duration : const Duration(seconds: 5),
+          child: _CustomIconButton(value: video.views, iconData: Icons.play_circle_outlined, iconColor: Colors.red))
       ],
     );
   }
@@ -22,7 +31,6 @@ class _CustomIconButton extends StatelessWidget {
   final IconData iconData;
   final Color? color;
   const _CustomIconButton({
-    super.key, 
     required this.value,
     required this.iconData,
      iconColor
@@ -34,8 +42,10 @@ class _CustomIconButton extends StatelessWidget {
       children: [
         IconButton(
           onPressed: (){}, 
-          icon: Icon(IconData, color: Color, size: 30,)),
-          Text('$value'),
+          icon: Icon(iconData, color: color, size: 30,)
+          ),
+          //if(value > 0),
+          Text(Formats.formatReadableNumber(value.toDouble())),
       ],
     );
   }
