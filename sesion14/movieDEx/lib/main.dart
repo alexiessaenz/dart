@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moviedex/presentation/providers/discover_provider.dart';
+import 'package:moviedex/presentation/screens/discover_screen.dart';
+import 'package:moviedex/presentation/screens/home_page.dart';
 import 'package:provider/provider.dart';
 
 import 'package:moviedex/config/theme/app_theme.dart';
@@ -25,60 +27,12 @@ class MyApp extends StatelessWidget {
       //   useMaterial3: true,
       //   brightness: Brightness.light,
       // ),
-      home: const myHomePage(),
       darkTheme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
+      home: const DiscoverScreen(),
     ));
   }
 }
 
-class myHomePage extends StatelessWidget{
-  const myHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-
-        title:  const Text('My PelixFlix2'),
-        actions: const [
-          Icon(Icons.search),
-          SizedBox(width: 13,),
-          Icon(Icons.more_vert),
-          SizedBox(width: 13,),
-        ],
-
-      ),
-
-
-      body: const Center(
-        child: Text('Hello World'),
-      ),
-
-      bottomNavigationBar: const BottomAppBar(
-        surfaceTintColor: Colors.transparent,
-        color: Colors.white,
-
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SizedBox(width: 13,),
-            Icon(Icons.home,),
-            SizedBox(width: 13,),
-            Icon(Icons.search),
-            SizedBox(width: 13,),
-            Icon(Icons.add),
-            SizedBox(width: 13,),
-            Icon(Icons.favorite),
-            SizedBox(width: 13,),
-            Icon(Icons.person),
-            SizedBox(width: 13,),
-          ],
-        ),
-      ),
-    );
-  }
-  
-}

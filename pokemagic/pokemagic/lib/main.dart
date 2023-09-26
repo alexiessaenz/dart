@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pokemagic/utils/Poke.dart' as poke;
+import 'package:pokemagic/utils/seach_delegate.dart';
 poke.Poke pk = new poke.Poke();
 String pkText = '';
 
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PokeMAgic',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -102,6 +105,17 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
+        actions: [
+          IconButton(
+            splashColor: Colors.transparent,
+            icon: const Icon(Icons.search),
+            tooltip: 'Increment',
+            onPressed: (){
+            showSearch(context: context,
+                delegate: MySearchDelegate());
+
+            },
+          ),],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -146,3 +160,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
