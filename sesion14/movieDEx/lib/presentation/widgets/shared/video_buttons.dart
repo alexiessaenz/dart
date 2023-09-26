@@ -19,7 +19,8 @@ class VideoButtons extends StatelessWidget {
         SpinPerfect(
           infinite: true,
           duration : const Duration(seconds: 5),
-          child: _CustomIconButton(value: video.views, iconData: Icons.play_circle_outlined, iconColor: Colors.red))
+          child: _CustomIconButton(value: video.views, iconData: Icons.play_circle_outlined, iconColor: Colors.red)
+          )
       ],
     );
   }
@@ -44,8 +45,8 @@ class _CustomIconButton extends StatelessWidget {
           onPressed: (){}, 
           icon: Icon(iconData, color: color, size: 30,)
           ),
-          //if(value > 0),
-          Text(Formats.formatReadableNumber(value.toDouble())),
+          if(value > 0)
+            Text(Formats.formatReadableNumber(value.toDouble())),
       ],
     );
   }

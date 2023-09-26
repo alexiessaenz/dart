@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 //import '../widgets/shared/video_scrollable.dart';
 
 import 'package:moviedex/presentation/providers/discover_provider.dart';
-import 'package:moviedex/presentation/widgets/shared/video_scrollable_view.dart';
+import 'package:moviedex/presentation/widgets/shared/video_scrollable_view_1.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatelessWidget{
@@ -26,9 +26,9 @@ class MyHomePage extends StatelessWidget{
       // ),
 
 
-      body: discoverProvider.initLoading
+      body: discoverProvider.initialLoading
           ? const Center(child: CircularProgressIndicator(strokeWidth: 2,))
-          : VideoScrollableView(videoList: discoverProvider.videoList),
+          : VideoScrollableView(videos: discoverProvider.videos),
 
       // bottomNavigationBar: const BottomAppBar(
       //   surfaceTintColor: Colors.transparent,

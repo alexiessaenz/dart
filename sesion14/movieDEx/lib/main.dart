@@ -6,9 +6,8 @@ import 'package:provider/provider.dart';
 
 import 'package:moviedex/config/theme/app_theme.dart';
 
-void main(List<String> args){
-  runApp(const MyApp());
-}
+void main(List<String> args) => runApp(const MyApp());
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -16,8 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-
-        ChangeNotifierProvider(create: (_) => DiscoverProvider()),
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (_) => DiscoverProvider()
+          ..loadNextPage()),
     ],
     child: MaterialApp(
       title: 'My PelixFlix2',

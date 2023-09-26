@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moviedex/presentation/providers/discover_provider.dart';
-import 'package:moviedex/presentation/widgets/shared/video_scrollable_view.dart';
+import 'package:moviedex/presentation/widgets/shared/video_scrollable.dart';
+//import 'package:moviedex/presentation/widgets/shared/video_scrollable_view_1.dart';
 import 'package:provider/provider.dart';
 
 import '../../shared/seach_delegate.dart';
@@ -19,7 +20,7 @@ class DiscoverScreen extends StatelessWidget {
 
         actions: [
           IconButton(
-            splashColor: Colors.transparent,
+            splashColor: Colors.amber,
             icon: const Icon(Icons.search),
             tooltip: 'Increment',
             onPressed: (){
@@ -34,9 +35,9 @@ class DiscoverScreen extends StatelessWidget {
 
       ),
       //body bubble messages
-      body: discoverProvider.initLoading
-          ? const Center(child: CircularProgressIndicator(strokeWidth: 2,))
-          : VideoScrollableView(videoList: discoverProvider.videoList),
+      body: discoverProvider.initialLoading 
+          ? const Center(child: CircularProgressIndicator(strokeWidth: 2,))  //true
+          : VideoScrollableView(videos: discoverProvider.videos),          //false
       //bottomNavigationBar: MessageFieldBox(),
       bottomNavigationBar: const BottomAppBar(
         surfaceTintColor: Colors.transparent,
