@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:moviedex/presentation/providers/discover_provider.dart';
+import 'package:moviedex/presentation/widgets/shared/video_scrollable_view.dart';
 import 'package:provider/provider.dart';
-import 'package:si_no_app/domain/entities/message.dart';
-import 'package:si_no_app/presentation/_ChatView.dart';
-import 'package:si_no_app/presentation/providers/chat_provider.dart';
-import 'package:si_no_app/presentation/widgets/chat/MyMessageBubble.dart' ;
-import 'package:si_no_app/presentation/widgets/chat/MyMessageBubbleOther.dart';
-import 'package:si_no_app/presentation/widgets/shared/message_field_box.dart';
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen ({super.key});
+class DiscoverScreen extends StatelessWidget {
+  const DiscoverScreen ({super.key});
 
   @override
   Widget build (BuildContext context){
+  var discoverProvider = context.watch<DiscoverProvider>(); //watch<DiscoverProvider>();
+
     return Scaffold(
-      appBar: AppBar(
-        leading: const Padding(
-          padding:  const EdgeInsets.all(3.0),
-          child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'),
-          ),
-        ),
-        title: const Text('Juan Perez'),
-        centerTitle: false,
-      ),
+      // appBar: AppBar(
+      //   leading: const Padding(
+      //     padding:  EdgeInsets.all(3.0),
+      //     child: CircleAvatar(
+      //         backgroundImage: NetworkImage(
+      //             'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'),
+      //     ),
+      //   ),
+      //   title: const Text('Juan Perez'),
+      //   centerTitle: false,
+      // ),
       //body bubble messages
-      body: _ChatView(),
+      body: discoverProvider.initLoading
+          ? const Center(child: CircularProgressIndicator(strokeWidth: 2,))
+          : VideoScrollableView(videoList: discoverProvider.videoList),
       // bottomNavigationBar: MessageFieldBox(),
     );
   }
 }
 
-class _ChatView extends StatelessWidget {
+/*class _ChatView extends StatelessWidget {
   //const _ChatView({super.key}) ;
   @override
   Widget build(BuildContext context) {
@@ -65,6 +65,6 @@ class _ChatView extends StatelessWidget {
     //   itemBuilder: (_, index) => const _ChatBubble(),
     // );
   }
-}
+} */
 
 
