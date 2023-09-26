@@ -3,6 +3,8 @@ import 'package:moviedex/presentation/providers/discover_provider.dart';
 import 'package:moviedex/presentation/widgets/shared/video_scrollable_view.dart';
 import 'package:provider/provider.dart';
 
+import '../../shared/seach_delegate.dart';
+
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen ({super.key});
 
@@ -11,22 +13,52 @@ class DiscoverScreen extends StatelessWidget {
   var discoverProvider = context.watch<DiscoverProvider>(); //watch<DiscoverProvider>();
 
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: const Padding(
-      //     padding:  EdgeInsets.all(3.0),
-      //     child: CircleAvatar(
-      //         backgroundImage: NetworkImage(
-      //             'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'),
-      //     ),
-      //   ),
-      //   title: const Text('Juan Perez'),
-      //   centerTitle: false,
-      // ),
+      appBar: AppBar(
+
+        title:  const Text('My PelixFlix2'),
+
+        actions: [
+          IconButton(
+            splashColor: Colors.transparent,
+            icon: const Icon(Icons.search),
+            tooltip: 'Increment',
+            onPressed: (){
+              showSearch(context: context,
+                  delegate: MySearchDelegate());
+            },
+          ),
+          //SizedBox(width: 13,),
+          Icon(Icons.more_vert),
+          SizedBox(width: 13,),
+        ],
+
+      ),
       //body bubble messages
       body: discoverProvider.initLoading
           ? const Center(child: CircularProgressIndicator(strokeWidth: 2,))
           : VideoScrollableView(videoList: discoverProvider.videoList),
-      // bottomNavigationBar: MessageFieldBox(),
+      //bottomNavigationBar: MessageFieldBox(),
+      bottomNavigationBar: const BottomAppBar(
+        surfaceTintColor: Colors.transparent,
+        color: Colors.white,
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(width: 13,),
+            Icon(Icons.home,),
+            SizedBox(width: 13,),
+            Icon(Icons.search),
+            SizedBox(width: 13,),
+            Icon(Icons.add),
+            SizedBox(width: 13,),
+            Icon(Icons.favorite),
+            SizedBox(width: 13,),
+            Icon(Icons.person),
+            SizedBox(width: 13,),
+          ],
+        ),
+      ),
     );
   }
 }
