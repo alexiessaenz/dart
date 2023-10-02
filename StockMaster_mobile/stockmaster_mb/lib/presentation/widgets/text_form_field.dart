@@ -35,11 +35,14 @@ class MyTextFormField extends StatelessWidget {
         helperText: helperText,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide:  BorderSide(color: Theme.of(context).colorScheme.primary, width: 2.0),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.primary,
+            width: 2.0,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide:  BorderSide(color: Theme.of(context).colorScheme.primary, width: 1.0),
+          borderSide:  BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.35), width: 1.5),
         ),
         
         //enabledBorder: outlineInputBorder,

@@ -12,18 +12,20 @@ const List<Color> _colorThemes =[
   Colors.pink,
 ];
 
-final int selectedColor=_colorThemes.indexOf(_customColor);
-
+//final int selectedColor = 0;
+//final c = _colorThemes[selectedColor];
 class AppTheme{
 final int selectedColor;
   AppTheme({this.selectedColor = 0}) 
       : assert(selectedColor >= 0 && selectedColor <= _colorThemes.length - 1,
       'Colors must be between 0 and ${_colorThemes.length}');
 
-  ThemeData getTheme() => ThemeData(
+  ThemeData theme() => ThemeData(
+    visualDensity: VisualDensity.adaptivePlatformDensity,
       appBarTheme: _appBarTheme(),
       useMaterial3: true,
       colorSchemeSeed: _colorThemes[selectedColor],
+      //colorScheme: ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]),
       // brightness: Brightness.dark,
     );
   
@@ -42,13 +44,14 @@ final int selectedColor;
 
 
 AppBarTheme _appBarTheme(){
-  return const AppBarTheme(
-    backgroundColor: _customColor,
-    foregroundColor: Colors.white,
+  return  AppBarTheme(//surfaceTintColor: ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).inversePrimary,
+    backgroundColor:ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).inversePrimary,
+    //backgroundColor: ,//ColorScheme.fromSeed(seedColor: c).primary.withOpacity(0.0),
+    //foregroundColor: ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).onPrimary,
     titleTextStyle: TextStyle(
-      color: Colors.white,
+      color: ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).primary,
       fontSize: 20,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.normal,
     ),
   );
 }
