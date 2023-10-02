@@ -1,0 +1,37 @@
+                                       ,----------------.                                                                                                                                             
+                                       |YesNoModel      |               ,------------------.                                                                                                          
+              ,--------------.         |----------------|               |AppTheme          |         ,---------------.                                                                                
+              |ChangeNotifier|         |+String answer  |               |------------------|         |StatelessWidget|                                                                                
+              |--------------|         |+bool forced    |               |+int selectedColor|         |---------------|                                                                                
+              `--------------'         |+String imageUrl|               |+ThemeData theme()|         `---------------'                                                                                
+                      |                `----------------'               `------------------'                 |                                                                                        
+                      |                                                                                      |                                                                                        
+                      |                                                                                      |                                                                                        
+      ,------------------------------.                                                                       |                                                                                        
+      |ChatProvider                  |                                                                       |           ,--------------------.                                                       
+      |------------------------------|   ,---------------.   ,---------------.  ,---------------.   ,----------------.   |MyMessageBubbleOther|   ,---------------.   ,------------------------------.
+      |+ScrollController sc          |   |MyApp          |   |ChatScreen     |  |ChatView       |   |MyMessageBubble |   |--------------------|   |_ImageBubble   |   |MessageFieldBox               |
+      |+GetYesNoAnswer getYesNoanswer|   |---------------|   |---------------|  |---------------|   |----------------|   |+Message message    |   |---------------|   |------------------------------|
+      |+List<Message> messages       |   |+Widget build()|   |+Widget build()|  |+Widget build()|   |+Message message|   |+Widget build()     |   |+String? url   |   |+void Function(String) onValue|
+      |+dynamic sendMessage()        |   `---------------'   `---------------'  `---------------'   |+Widget build() |   |+String nouw()      |   |+Widget build()|   |+Widget build()               |
+      |+dynamic scrollToBottom()     |                                                              `----------------'   `--------------------'   `---------------'   `------------------------------'
+      |+dynamic otherReply()         |                                                                                                                                                |               
+      `------------------------------'                                                                                                                                                |               
+                                                                                                                                                                                      |               
+                                                                                                               ,-----------------.                                                    |               
+,--------------------.                                                                                         |Message          |                                                    |               
+|GetYesNoAnswer      |  ,----------------.                                                            ,----.   |-----------------|                                        ,---------------------.     
+|--------------------|  |ScrollController|                                                            |Enum|   |+String text     |                                        |void Function(String)|     
+|-Dio _dio           |  |----------------|                                                            |----|   |+String? imageUrl|                                        |---------------------|     
+|+dynamic getAnswer()|  `----------------'                                                            `----'   |+FromWho fromWho |                                        `---------------------'     
+`--------------------'                                                                                         `-----------------'                                                                    
+           |                                                                                                                                                                                          
+           |                                                                                                                                                                                          
+           |                                                                                     ,------------------------------.                                                                     
+                                                                                                 |FromWho                       |                                                                     
+        ,---.                                                                                    |------------------------------|                                                                     
+        |Dio|                                                                                    |+int index                    |                                                                     
+        |---|                                                                                    |{static} +List<FromWho> values|                                                                     
+        `---'                                                                                    |{static} +FromWho me          |                                                                     
+                                                                                                 |{static} +FromWho other       |                                                                     
+                                                                                                 `------------------------------'                                                                     

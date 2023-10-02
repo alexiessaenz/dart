@@ -1,0 +1,104 @@
+@startuml
+set namespaceSeparator ::
+
+class "si_no_app::config::helpers::get_yes_no_answer.dart::GetYesNoAnswer" {
+  -Dio _dio
+  +dynamic getAnswer()
+}
+
+"si_no_app::config::helpers::get_yes_no_answer.dart::GetYesNoAnswer" o-- "dio::src::dio.dart::Dio"
+
+class "si_no_app::config::infrastructure::model::yes_no_model.dart::YesNoModel" {
+  +String answer
+  +bool forced
+  +String imageUrl
+}
+
+class "si_no_app::config::theme::app_theme.dart::AppTheme" {
+  +int selectedColor
+  +ThemeData theme()
+}
+
+class "si_no_app::domain::entities::message.dart::Message" {
+  +String text
+  +String? imageUrl
+  +FromWho fromWho
+}
+
+"si_no_app::domain::entities::message.dart::Message" o-- "si_no_app::domain::entities::message.dart::FromWho"
+
+class "si_no_app::domain::entities::message.dart::FromWho" {
+  +int index
+  {static} +List<FromWho> values
+  {static} +FromWho me
+  {static} +FromWho other
+}
+
+"si_no_app::domain::entities::message.dart::FromWho" o-- "si_no_app::domain::entities::message.dart::FromWho"
+"dart::core::Enum" <|-- "si_no_app::domain::entities::message.dart::FromWho"
+
+class "si_no_app::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "si_no_app::main.dart::MyApp"
+
+class "si_no_app::presentation::chat_screen.dart::ChatScreen" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "si_no_app::presentation::chat_screen.dart::ChatScreen"
+
+class "si_no_app::presentation::chat_view.dart::ChatView" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "si_no_app::presentation::chat_view.dart::ChatView"
+
+class "si_no_app::presentation::providers::chat_provider.dart::ChatProvider" {
+  +ScrollController sc
+  +GetYesNoAnswer getYesNoanswer
+  +List<Message> messages
+  +dynamic sendMessage()
+  +dynamic scrollToBottom()
+  +dynamic otherReply()
+}
+
+"si_no_app::presentation::providers::chat_provider.dart::ChatProvider" o-- "flutter::src::widgets::scroll_controller.dart::ScrollController"
+"si_no_app::presentation::providers::chat_provider.dart::ChatProvider" o-- "si_no_app::config::helpers::get_yes_no_answer.dart::GetYesNoAnswer"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "si_no_app::presentation::providers::chat_provider.dart::ChatProvider"
+
+class "si_no_app::presentation::widgets::chat::MyMessageBubble.dart::MyMessageBubble" {
+  +Message message
+  +Widget build()
+}
+
+"si_no_app::presentation::widgets::chat::MyMessageBubble.dart::MyMessageBubble" o-- "si_no_app::domain::entities::message.dart::Message"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "si_no_app::presentation::widgets::chat::MyMessageBubble.dart::MyMessageBubble"
+
+class "si_no_app::presentation::widgets::chat::MyMessageBubbleOther.dart::MyMessageBubbleOther" {
+  +Message message
+  +Widget build()
+  +String nouw()
+}
+
+"si_no_app::presentation::widgets::chat::MyMessageBubbleOther.dart::MyMessageBubbleOther" o-- "si_no_app::domain::entities::message.dart::Message"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "si_no_app::presentation::widgets::chat::MyMessageBubbleOther.dart::MyMessageBubbleOther"
+
+class "si_no_app::presentation::widgets::chat::MyMessageBubbleOther.dart::_ImageBubble" {
+  +String? url
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "si_no_app::presentation::widgets::chat::MyMessageBubbleOther.dart::_ImageBubble"
+
+class "si_no_app::presentation::widgets::shared::message_field_box.dart::MessageFieldBox" {
+  +void Function(String) onValue
+  +Widget build()
+}
+
+"si_no_app::presentation::widgets::shared::message_field_box.dart::MessageFieldBox" o-- "flutter::src::foundation::basic_types.dart::void Function(String)"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "si_no_app::presentation::widgets::shared::message_field_box.dart::MessageFieldBox"
+
+
+@enduml

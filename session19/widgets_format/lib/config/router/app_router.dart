@@ -25,4 +25,4 @@ final appRouter = GoRouter(
       //pageBuilder: (context, state) => const HomeScreen(),
     ),
   ]
-)
+);

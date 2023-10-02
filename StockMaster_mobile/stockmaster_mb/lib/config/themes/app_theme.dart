@@ -20,17 +20,19 @@ final int selectedColor;
       : assert(selectedColor >= 0 && selectedColor <= _colorThemes.length - 1,
       'Colors must be between 0 and ${_colorThemes.length}');
 
-  ThemeData theme(){
-    return ThemeData(
+  ThemeData getTheme() => ThemeData(
       appBarTheme: _appBarTheme(),
       useMaterial3: true,
       colorSchemeSeed: _colorThemes[selectedColor],
       // brightness: Brightness.dark,
     );
-  }
+  
 
   ThemeData darkTheme(){
     return ThemeData(
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    highlightColor: Colors.black.withOpacity(0.5),
+    splashColor: _colorThemes[selectedColor],
       appBarTheme: _appBarTheme(),
       useMaterial3: true,
       colorSchemeSeed: _colorThemes[selectedColor],
@@ -40,7 +42,7 @@ final int selectedColor;
 
 
 AppBarTheme _appBarTheme(){
-  return AppBarTheme(
+  return const AppBarTheme(
     backgroundColor: _customColor,
     foregroundColor: Colors.white,
     titleTextStyle: TextStyle(

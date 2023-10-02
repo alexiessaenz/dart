@@ -3,8 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:si_no_app/config/theme/app_theme.dart';
 import 'package:si_no_app/presentation/chat_screen.dart';
 import 'package:si_no_app/presentation/providers/chat_provider.dart';
-import '';
-
+// import 'package:dcdg/dcdg.dart';  
+//dart pub global run dcdg [-o lib/plnt.txt]                  //plantuml
+//dart pub global run dcdg -b mermaid [-o lib/mermaid.txt]       //mermaid
 void main() {
   runApp(const MyApp());
 }

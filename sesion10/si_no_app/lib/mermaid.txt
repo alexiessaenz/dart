@@ -1,0 +1,77 @@
+classDiagram
+class GetYesNoAnswer
+GetYesNoAnswer : -_dio Dio
+GetYesNoAnswer o-- Dio
+GetYesNoAnswer : +getAnswer() dynamic
+
+class YesNoModel
+YesNoModel : +answer String
+YesNoModel : +forced bool
+YesNoModel : +imageUrl String
+
+class AppTheme
+AppTheme : +selectedColor int
+AppTheme : +theme() ThemeData
+
+class Message
+Message : +text String
+Message : +imageUrl String?
+Message : +fromWho FromWho
+Message o-- FromWho
+
+class FromWho
+<<enumeration>> FromWho
+FromWho : +index int
+FromWho : +values$ List~FromWho~
+FromWho : +me$ FromWho
+FromWho o-- FromWho
+FromWho : +other$ FromWho
+FromWho o-- FromWho
+Enum <|.. FromWho
+
+class MyApp
+MyApp : +build() Widget
+StatelessWidget <|-- MyApp
+
+class ChatScreen
+ChatScreen : +build() Widget
+StatelessWidget <|-- ChatScreen
+
+class ChatView
+ChatView : +build() Widget
+StatelessWidget <|-- ChatView
+
+class ChatProvider
+ChatProvider : +sc ScrollController
+ChatProvider o-- ScrollController
+ChatProvider : +getYesNoanswer GetYesNoAnswer
+ChatProvider o-- GetYesNoAnswer
+ChatProvider : +messages List~Message~
+ChatProvider : +sendMessage() dynamic
+ChatProvider : +scrollToBottom() dynamic
+ChatProvider : +otherReply() dynamic
+ChangeNotifier <|-- ChatProvider
+
+class MyMessageBubble
+MyMessageBubble : +message Message
+MyMessageBubble o-- Message
+MyMessageBubble : +build() Widget
+StatelessWidget <|-- MyMessageBubble
+
+class MyMessageBubbleOther
+MyMessageBubbleOther : +message Message
+MyMessageBubbleOther o-- Message
+MyMessageBubbleOther : +build() Widget
+MyMessageBubbleOther : +nouw() String
+StatelessWidget <|-- MyMessageBubbleOther
+
+class _ImageBubble
+_ImageBubble : +url String?
+_ImageBubble : +build() Widget
+StatelessWidget <|-- _ImageBubble
+
+class MessageFieldBox
+MessageFieldBox : +onValue void FunctionString
+MessageFieldBox o-- void FunctionString
+MessageFieldBox : +build() Widget
+StatelessWidget <|-- MessageFieldBox

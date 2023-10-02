@@ -1,5 +1,5 @@
-export 'package:widgets_format/presentation/screens/animated/animated_screen.dart';
-export 'package:widgets_format/presentation/screens/app_tutorial/app_tutorial_screen.dart';
+// export 'package:widgets_format/presentation/screens/animated/animated_screen.dart';
+// export 'package:widgets_format/presentation/screens/app_tutorial/app_tutorial_screen.dart';
 export 'package:widgets_format/presentation/screens/buttons/buttons_screen.dart';
 export 'package:widgets_format/presentation/screens/cards/cards_screen.dart';
 export 'package:widgets_format/presentation/screens/home/home_screen.dart';
