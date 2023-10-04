@@ -2,29 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:stockmaster_mb/config/themes/app_theme.dart';
 import 'package:stockmaster_mb/presentation/widgets/text_form_field.dart';
 
-void main(List<String> args) => runApp(MyApp());
+// void main(List<String> args) => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme(
-        selectedColor: 5).theme(),
-      /* ThemeData(
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: AppTheme(
+//         selectedColor: 5).theme(),
+//       /* ThemeData(
 
-        primarySwatch : Colors.blue,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
-      ), */
-      home: const SignInScreen(),
+//         primarySwatch : Colors.blue,
+//         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
+//       ), */
+//       home: const SignInScreen(),
     
-    );
-  }
-}
+//     );
+//   }
+// }
 
 class SignInScreen extends StatelessWidget {
+  static const String name = 'signin_screen';
   const SignInScreen({super.key});
 
   @override

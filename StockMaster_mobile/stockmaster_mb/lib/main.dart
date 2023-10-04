@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stockmaster_mb/config/router/app_router.dart';
+import 'package:stockmaster_mb/config/themes/app_theme.dart';
+import 'package:stockmaster_mb/presentation/screens/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,23 +13,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: appRouter,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomeScreen(),
+      theme: AppTheme(selectedColor: 1).getTheme(),
     );
   }
 }
 
-class MyHomeScreen extends StatelessWidget {
-  const MyHomeScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
