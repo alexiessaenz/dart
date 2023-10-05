@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_format/menu/menu_items.dart';
+import 'package:widgets_format/config/menu/menu_items.dart';
 import 'package:go_router/go_router.dart';
 
 
