@@ -44,8 +44,8 @@ final int selectedColor;
 
 
 AppBarTheme _appBarTheme(){
-  return  AppBarTheme(//surfaceTintColor: ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).inversePrimary,
-    backgroundColor:ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).inversePrimary,
+  return  AppBarTheme(
+    backgroundColor:ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).primary.withOpacity(0.5),
     //backgroundColor: ,//ColorScheme.fromSeed(seedColor: c).primary.withOpacity(0.0),
     //foregroundColor: ColorScheme.fromSeed(seedColor: _colorThemes[selectedColor]).onPrimary,
     titleTextStyle: TextStyle(
