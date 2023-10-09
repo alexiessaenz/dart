@@ -7,14 +7,13 @@ import 'package:stockmaster_mb/presentation/widgets/text_form_field.dart';
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: AppTheme(
-//         selectedColor: 5).theme(),
-//       /* ThemeData(
-
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     title: 'Flutter Demo',
+  //     theme: AppTheme(
+  //       selectedColor: 3).getTheme(),
+      /* ThemeData(
 //         primarySwatch : Colors.blue,
 //         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
 //       ), */
