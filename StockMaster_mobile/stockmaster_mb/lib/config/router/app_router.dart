@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:stockmaster_mb/presentation/screens/auth/sign_in_screen.dart';
 import 'package:stockmaster_mb/presentation/screens/screens.dart';
+
 
 final appRouter = GoRouter(
   initialLocation: '/',
@@ -17,12 +17,12 @@ final appRouter = GoRouter(
       builder: (context, state) => const SignInScreen(),
       //pageBuilder: (context, state) => const HomeScreen(),
     ),
-    // GoRoute(
-    //   path: '/cards',
-    //   name: CardsScreen.name,
-    //   builder: (context, state) => const CardsScreen(),
-    //   //pageBuilder: (context, state) => const HomeScreen(),
-    // ),
+    GoRoute(
+      path: '/stored-screen',
+      name: StoredScreen.name,
+      builder: (context, state) => const StoredScreen(),
+      //pageBuilder: (context, state) => const HomeScreen(),
+     ),
     // GoRoute(
     //   path: '/progress',
     //   name: ProgressScreen.name,

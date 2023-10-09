@@ -29,6 +29,7 @@ class SideMenuState extends State<SideMenu> {
 
           final menuItem = appMenuItems[value];
           context.push(menuItem.link);
+          // context.replace(menuItem.link);
           widget.scaffoldKey.currentState?.closeDrawer();
         },
         children: [
@@ -73,7 +74,7 @@ class Isdark extends ConsumerWidget {
 
     return IconButton(
       icon: Icon(
-          isDarkmode ? Icons.dark_mode_outlined : Icons.light_mode_outlined),
+          isDarkmode ? Icons.light_mode_outlined : Icons.dark_mode_outlined),
       onPressed: () {
         ref.read(isDarkmodeProvider.notifier).update((state) => !state);
         // ref.read( themeNotifierProvider.notifier )

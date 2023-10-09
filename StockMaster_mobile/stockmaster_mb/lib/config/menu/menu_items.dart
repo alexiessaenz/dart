@@ -24,9 +24,9 @@ const appMenuItems = <MenuItem>[
     icon: Icons.add
   ),
   MenuItem(
-    title: 'Botones', 
-    subTitle: 'Varios botones en Flutter', 
-    link: '/buttons', 
+    title: 'Stored',
+    subTitle: 'Products in local storage',
+    link: '/stored-screen',
     icon: Icons.smart_button_outlined
   ),
 
