@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:stockmaster_mb/presentation/screens/auth/sign_in_screen.dart';
-import 'package:stockmaster_mb/presentation/screens/home/home_screen.dart';
+import 'package:stockmaster_mb/presentation/screens/screens.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',
