@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:stockmaster_mb/presentation/widgets/fixedcolumwidget.dart';
-import 'package:stockmaster_mb/presentation/widgets/scrolablecolumn.dart';
+import 'package:stockmaster_mb/presentation/screens/bussiness/stored_screen.dart';
+import 'package:stockmaster_mb/presentation/widgets/data_table_container_widget.dart';
+import 'package:stockmaster_mb/presentation/widgets/side_menu.dart';
+import 'package:stockmaster_mb/presentation/widgets/text_form_field.dart';
+import 'package:animate_do/animate_do.dart';
+class InputScreen extends StatelessWidget {
+  static const String name = 'input_screen';
 
-import '../../widgets/data_table_container_widget.dart';
-import '../../widgets/side_menu.dart';
-import '../../widgets/text_form_field.dart';
-
-class StoredScreen extends StatelessWidget {
-  static const String name = 'stored_screen';
-
-  const StoredScreen({super.key});
+  const InputScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +19,7 @@ class StoredScreen extends StatelessWidget {
             title: const Row(
               children: [
                 SizedBox(width: 8),
-                Text('Stored'),
+                Text('Input'),
               ],
             ),
             //automaticallyImplyLeading: false,
@@ -38,25 +35,31 @@ class StoredScreen extends StatelessWidget {
             ],
             elevation: 2
         ),
-        body: _HomeStored(),
+        body: _HomeIputs(),
         // backgroundColor: Colors.transparent,
         drawer: SideMenu(scaffoldKey: scaffoldKey)
     );
   }
 }
 
-class _HomeStored extends StatelessWidget {
-  const _HomeStored({
+class _HomeIputs extends StatefulWidget {
+  const _HomeIputs({
     super.key,
   });
 
+  @override
+  State<_HomeIputs> createState() => _HomeIputsState();
+}
+
+class _HomeIputsState extends State<_HomeIputs> {
+    bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Container(padding: EdgeInsets.all(8), //padding
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 12,),
+          const SizedBox(height: 16,),
           Form(
             // MyTextFormField(
             //   hintText: 'Enter your email',
@@ -69,13 +72,52 @@ class _HomeStored extends StatelessWidget {
             //   },
             // ),
       //key: _formKey,
-      child:  Column(
+      child:  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           // Add TextFormFields and ElevatedButton here.
-           MyTextFormField(
-                  label: 'Email | Username',
-                  hint: 'Enter your email',
-                  helperText: 'We will never share your email with anyone else.',),
+           Container(constraints: BoxConstraints( 
+              // maxHeight: MediaQuery.of(context).size.height * 0.5,
+              maxWidth: MediaQuery.of(context).size.width*0.45),
+             child:  MyTextFormField(
+                    label: 'Inputs',
+                    hint: 'Enter your new input',
+                    helperText: 'To input available products.',
+                    // icon: Icons.add
+                    ),
+           ),
+          // Add TextFormFields and ElevatedButton here.
+           Container(constraints: BoxConstraints( 
+              // maxHeight: MediaQuery.of(context).size.height * 0.5,
+              maxWidth: MediaQuery.of(context).size.width*0.3),
+             child:  MyTextFormField(
+                    label: 'amount',
+                    hint: 'amount',
+                    helperText: 'more than 0',
+                    //icon: Icons.abc
+                    ),
+           ),
+          Container(padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
+            constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.2),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    child: FloatingActionButton.extended(extendedIconLabelSpacing: 2,
+                      extendedPadding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      onPressed: () {
+                        deflattedpushroute();
+                        //context.push('/stored-screen');
+                      },
+                      icon: isLoading
+                          ? SpinPerfect(
+                              infinite: true,
+                              child: const Icon(Icons.refresh_rounded))
+                          : FadeIn(child: const Icon(Icons.add)),
+                      label: const Text('New'),
+                    ),
+                  ),
+            ),
+            
+          
         ],
       ),
     ),
@@ -120,4 +162,15 @@ class _HomeStored extends StatelessWidget {
       ),
     );
   }
+  
+  Future<void> deflattedpushroute() async {
+    isLoading = true;
+    setState(() { },);
+    await Future.delayed(const Duration(milliseconds: 750), () {
+        isLoading = false;
+        setState(() { },);
+        //context.push('/stored-screen');
+    });
+  }
 }
+ 

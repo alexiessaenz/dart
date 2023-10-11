@@ -23,11 +23,17 @@ final appRouter = GoRouter(
       builder: (context, state) => const StoredScreen(),
       //pageBuilder: (context, state) => const HomeScreen(),
      ),
-    // GoRoute(
-    //   path: '/progress',
-    //   name: ProgressScreen.name,
-    //   builder: (context, state) => const ProgressScreen(),
-    //   //pageBuilder: (context, state) => const HomeScreen(),
-    // ),
+    GoRoute(
+      path: '/input-screen',
+      name: InputScreen.name,
+      builder: (context, state) => const InputScreen(),
+      //pageBuilder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: '/output-screen',
+      name: OutputScreen.name,
+      builder: (context, state) => const OutputScreen(),
+      //pageBuilder: (context, state) => const HomeScreen(),
+    ),
   ]
 );
