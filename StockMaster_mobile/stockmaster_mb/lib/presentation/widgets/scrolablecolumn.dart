@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stockmaster_mb/model/entities/datateams.dart';
+import 'package:stockmaster_mb/presentation/providers/datateams.dart';
 
 class ScrollableColumnWidget extends StatelessWidget {
   @override
@@ -8,7 +8,7 @@ class ScrollableColumnWidget extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(
-            headingRowColor: MaterialStateProperty.all(Colors.green[100]),
+            headingRowColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primaryContainer),
             columnSpacing: 40,
             decoration: BoxDecoration(
               border: Border(

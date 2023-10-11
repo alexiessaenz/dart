@@ -23,18 +23,19 @@ class SideMenuState extends State<SideMenu> {
     return NavigationDrawer(
         selectedIndex: navDrawerIndex,
         onDestinationSelected: (value) {
+
           setState(() {
             navDrawerIndex = value;
           });
-
           final menuItem = appMenuItems[value];
-          context.push(menuItem.link);
-          // context.replace(menuItem.link);
           widget.scaffoldKey.currentState?.closeDrawer();
+          widget.scaffoldKey.currentState?.closeEndDrawer();
+          // context.replace(menuItem.link);
+          flatteredrouted(context, menuItem);
         },
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(28, hasNotch ? 0 : 5, 16, 0),
+            padding: EdgeInsets.fromLTRB(28, hasNotch ? 0 : 14, 16, 0),
             child: Align(
             alignment: Alignment.centerRight,
             child:  Isdark()),
@@ -64,6 +65,11 @@ class SideMenuState extends State<SideMenu> {
                 ),
               ),
         ]);
+  }
+
+  Future<void> flatteredrouted(BuildContext context, MenuItem menuItem) async {
+    await Future.delayed(const Duration(milliseconds: 200), () =>context.push(menuItem.link));
+    
   }
 }
 

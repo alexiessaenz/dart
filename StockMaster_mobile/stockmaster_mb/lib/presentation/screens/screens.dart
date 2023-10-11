@@ -16,3 +16,6 @@
 export 'package:stockmaster_mb/presentation/screens/home/home_screen.dart';
 export 'package:stockmaster_mb/presentation/screens/auth/sign_in_screen.dart';
 export 'package:stockmaster_mb/presentation/screens/bussiness/stored_screen.dart';
+
+export 'package:stockmaster_mb/presentation/screens/bussiness/input_screen.dart';
+export 'package:stockmaster_mb/presentation/screens/bussiness/output_screen.dart';
