@@ -31,16 +31,16 @@ const appMenuItems = <MenuItem>[
   ),
 
   MenuItem(
-    title: 'Tarjetas', 
-    subTitle: 'Un contenedor estilizado', 
-    link: '/cards', 
+    title: 'Inputs', 
+    subTitle: 'Inputs of products', 
+    link: '/input-screen', 
     icon: Icons.credit_card
   ),
 
   MenuItem(
-    title: 'Progress Indicators', 
-    subTitle: 'Generales y controlados', 
-    link: '/progress', 
+    title: 'Outputs', 
+    subTitle: 'Outputs of products', 
+    link: '/output-screen', 
     icon: Icons.refresh_rounded
   ),
 

@@ -4,19 +4,24 @@ class MyTextFormField extends StatelessWidget {
   final String label;
   final String hint;
   final String helperText;
+  IconData? icon;
 
   //final ValueChanged<String> onValue; //
   
-  const MyTextFormField({
+  MyTextFormField({
     super.key,
     required this.label,
     required this.hint,
-    required this.helperText, 
+    required this.helperText,
+     this.icon=Icons.close, 
     //required this.onValue    //
     });
 
   @override
   Widget build(BuildContext context) {
+    if (icon==Icons.abc) {
+        icon=null;
+    }
 
     final textController = TextEditingController();
     final focusNode = FocusNode();
@@ -27,6 +32,7 @@ class MyTextFormField extends StatelessWidget {
     //);
 
     final inputDecoration = InputDecoration(
+      contentPadding: const EdgeInsets.fromLTRB(16, 16, 4, 16),
       labelStyle: TextStyle(
             color: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.normal),
@@ -48,8 +54,8 @@ class MyTextFormField extends StatelessWidget {
         //enabledBorder: outlineInputBorder,
         //focusedBorder: outlineInputBorder,
         filled: false,
-        suffixIcon: IconButton(
-          icon: const Icon(Icons.close),
+        suffixIcon: IconButton(iconSize: 14,
+          icon:  Icon(icon),
           onPressed: () {
             final textValue = textController.value.text;
             textController.clear();
@@ -58,7 +64,7 @@ class MyTextFormField extends StatelessWidget {
         ));
       
 
-    return TextFormField(
+    return TextFormField(//maxLength:  20,
       onTapOutside: (event){
         
         focusNode.unfocus();

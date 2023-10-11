@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stockmaster_mb/config/themes/app_theme.dart';
 import 'package:stockmaster_mb/presentation/widgets/text_form_field.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:go_router/go_router.dart';
 
 // void main(List<String> args) => runApp(MyApp());
 
@@ -23,10 +25,16 @@ import 'package:stockmaster_mb/presentation/widgets/text_form_field.dart';
 //   }
 // }
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   static const String name = 'signin_screen';
   const SignInScreen({super.key});
 
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+    bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,12 +66,12 @@ class SignInScreen extends StatelessWidget {
               children: [
                 Text('  Sign In ',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 24,fontWeight: FontWeight.normal),),
                 const SizedBox(height: 48,),
-                const MyTextFormField(
+                 MyTextFormField(
                   label: 'Email | Username',
                   hint: 'Enter your email',
                   helperText: 'We will never share your email with anyone else.',),
                 const SizedBox(height: 32,),
-                const MyTextFormField(
+                 MyTextFormField(
                   label: 'Password',
                   hint: 'Enter your password',
                   helperText: 'We will never share your password with anyone else.',),
@@ -75,15 +83,25 @@ class SignInScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16,),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
 
                   children: [
-                    OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(Icons.terminal),
-                        label: const Text('Filled Icon')),
+                    FilledButton.icon(
+                        onPressed: () {
+                          
+                          deflattedpushroute();
+                          //context.push('/stored-screen');
+                        },
+                        icon: isLoading 
+                              ? SpinPerfect(
+                                infinite: true,
+                                child: const Icon(Icons.refresh_rounded)
+                              )
+                              : FadeIn(child: const Icon(Icons.arrow_back_ios_new_outlined)),
+                        label: const Text('Submit'),
+                    ),
                     OutlinedButton(
-                        onPressed: () {}, child: const Text('Outlined')),
+                        onPressed: () {context.push('/');}, child: const Text('Cancel')),
                     
                   ],
                 ),
@@ -99,9 +117,19 @@ class SignInScreen extends StatelessWidget {
       
     );
   }
-  
+
+  Future deflattedpushroute() async {
+    isLoading = true;
+    setState(() { },);
+    await Future.delayed(const Duration(milliseconds: 750), () {
+        isLoading = false;
+        setState(() { },);
+        context.push('/stored-screen');
+    });
+        
+  }
+
     //supporting text
-    
     TextFormField _textFormField() {
       return TextFormField(
         obscureText: true,

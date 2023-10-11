@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:stockmaster_mb/model/entities/datateams.dart';
+import 'package:stockmaster_mb/presentation/providers/datateams.dart';
 
 class FixedColumnWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DataTable(
+    return DataTable(border: TableBorder.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.2), width: 1),
       columnSpacing: 10,
-      headingRowColor: MaterialStateProperty.all(Colors.green[300]),
+      headingRowColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary.withOpacity(0.7)),
       decoration: BoxDecoration(
         border: Border(
+          
           right: BorderSide(
-            color: Colors.grey,
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
             width: 2,
           ),
         ),

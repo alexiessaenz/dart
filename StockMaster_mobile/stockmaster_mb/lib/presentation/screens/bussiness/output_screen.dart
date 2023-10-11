@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:stockmaster_mb/presentation/widgets/fixedcolumwidget.dart';
-import 'package:stockmaster_mb/presentation/widgets/scrolablecolumn.dart';
+import 'package:stockmaster_mb/presentation/screens/bussiness/stored_screen.dart';
+import 'package:stockmaster_mb/presentation/widgets/data_table_container_widget.dart';
+import 'package:stockmaster_mb/presentation/widgets/side_menu.dart';
+import 'package:stockmaster_mb/presentation/widgets/text_form_field.dart';
 
-import '../../widgets/data_table_container_widget.dart';
-import '../../widgets/side_menu.dart';
-import '../../widgets/text_form_field.dart';
+class OutputScreen extends StatelessWidget {
+  static const String name = 'output_screen';
 
-class StoredScreen extends StatelessWidget {
-  static const String name = 'stored_screen';
-
-  const StoredScreen({super.key});
+  const OutputScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +19,7 @@ class StoredScreen extends StatelessWidget {
             title: const Row(
               children: [
                 SizedBox(width: 8),
-                Text('Stored'),
+                Text('Input'),
               ],
             ),
             //automaticallyImplyLeading: false,
@@ -38,15 +35,15 @@ class StoredScreen extends StatelessWidget {
             ],
             elevation: 2
         ),
-        body: _HomeStored(),
+        body: _HomeOutputs(),
         // backgroundColor: Colors.transparent,
         drawer: SideMenu(scaffoldKey: scaffoldKey)
     );
   }
 }
 
-class _HomeStored extends StatelessWidget {
-  const _HomeStored({
+class _HomeOutputs extends StatelessWidget {
+  const _HomeOutputs({
     super.key,
   });
 
@@ -73,9 +70,9 @@ class _HomeStored extends StatelessWidget {
         children: <Widget>[
           // Add TextFormFields and ElevatedButton here.
            MyTextFormField(
-                  label: 'Email | Username',
-                  hint: 'Enter your email',
-                  helperText: 'We will never share your email with anyone else.',),
+                  label: 'Inputs',
+                  hint: 'Enter your new input',
+                  helperText: 'You are allowed only input available products.',),
         ],
       ),
     ),
@@ -121,3 +118,4 @@ class _HomeStored extends StatelessWidget {
     );
   }
 }
+ 
