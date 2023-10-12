@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stockmaster_mb/presentation/providers/datateams.dart';
+import 'package:stockmaster_mb/presentation/providers/stored_provider.dart';
 
 class ScrollableColumnWidget extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class ScrollableColumnWidget extends StatelessWidget {
         child: DataTable(
             headingRowColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primaryContainer),
             columnSpacing: 40,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               border: Border(
                 right: BorderSide(
                   color: Colors.grey,
@@ -18,11 +18,12 @@ class ScrollableColumnWidget extends StatelessWidget {
                 ),
               ),
             ),
-            columns: [
-              DataColumn(label: Text('Points')),
-              DataColumn(label: Text('Won')),
-              DataColumn(label: Text('Lost')),
-              DataColumn(label: Text('Drawn')),
+            columns: const [
+              DataColumn(label: Text('Product')),
+              DataColumn(label: Text('Available')),
+              DataColumn(label: Text('Initial')),
+              DataColumn(label: Text('Last')),
+              DataColumn(label: Text('Lote')),
               DataColumn(label: Text('Against')),
               DataColumn(label: Text('GD')),
             ],
@@ -30,6 +31,10 @@ class ScrollableColumnWidget extends StatelessWidget {
               ...teamsData
                   .map((team) => DataRow(
                         cells: [
+                          DataCell(
+                            Container(
+                              alignment: AlignmentDirectional.center,
+                              child: Text(team.product.toString()))),
                           DataCell(
                             Container(
                               alignment: AlignmentDirectional.center,

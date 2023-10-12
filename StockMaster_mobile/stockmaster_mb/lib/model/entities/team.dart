@@ -2,6 +2,7 @@ class Team {
   Team({
     required this.position,
     required this.name,
+    required this.product,
     required this.points,
     required this.played,
     required this.won,
@@ -13,6 +14,7 @@ class Team {
 
   final int position;
   final String name;
+  final String product;
   final int points;
   final int played;
   final int won;
