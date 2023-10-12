@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:stockmaster_mb/presentation/screens/screens.dart';
 
+import '../../presentation/screens/admin/users_grants_screen.dart';
+
 
 final appRouter = GoRouter(
   initialLocation: '/',
@@ -33,6 +35,12 @@ final appRouter = GoRouter(
       path: '/output-screen',
       name: OutputScreen.name,
       builder: (context, state) => const OutputScreen(),
+      //pageBuilder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: '/adminusers-screen',
+      name: AdminUsersScreen.name,
+      builder: (context, state) => const AdminUsersScreen(),
       //pageBuilder: (context, state) => const HomeScreen(),
     ),
   ]
