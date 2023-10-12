@@ -45,9 +45,9 @@ const appMenuItems = <MenuItem>[
   ),
 
   MenuItem(
-    title: 'Snackbars y diálogos', 
-    subTitle: 'Indicadores en pantalla', 
-    link: '/snackbars', 
+    title: 'Admin Users',
+    subTitle: 'Grants in table view',
+    link: '/adminusers-screen',
     icon: Icons.info_outline
   ),
 
