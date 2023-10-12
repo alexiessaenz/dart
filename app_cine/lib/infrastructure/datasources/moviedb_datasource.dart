@@ -1,8 +1,12 @@
 import 'package:app_cine/config/constant/environment.dart';
 import 'package:app_cine/domain/entities/movie.dart';
+import 'package:app_cine/domain/entities/movie.dart';
+import 'package:app_cine/domain/datasources/movies_datasource.dart';
+import 'package:app_cine/infrastructure/mappers/movie_mapper.dart';
+import 'package:app_cine/infrastructure/models/moviedb/moviedb_response.dart';
 import 'package:dio/dio.dart';
 
-class MovieDbDataSource extends MovieDataSource {
+class MoviedbDatasource extends MoviesDatasource {
   final dio = Dio(BaseOptions(
     baseUrl: 'https://api.themoviedb.org/3',
     queryParameters: {
@@ -15,7 +19,8 @@ class MovieDbDataSource extends MovieDataSource {
     final movieDBResponse = MovieDbResponse.fromJson(json);
     
     final List<Movie> movies = movieDBResponse.results
-    .where((moviedb)=>moviedb.posterPath!='no-poster').map(
+    .where((moviedb)=>moviedb.posterPath!='no-poster')
+    .map(
       (moviedb) => MovieMapper.movieDBToEntity(moviedb)).toList();
       return movies;
   }
@@ -40,6 +45,15 @@ class MovieDbDataSource extends MovieDataSource {
   @overrride
   Future<List<Movie>> getTopRated({int page = 1}) async {
     final response = await dio.get('/movie/top_rated', 
+    queryParameters: {
+      'page': page,
+    });
+    return _jsonToMovies(response.data);
+  }
+
+  @overrride
+  Future<List<Movie>> getUpcoming({int page = 1}) async {
+    final response = await dio.get('/movie/upcoming', 
     queryParameters: {
       'page': page,
     });

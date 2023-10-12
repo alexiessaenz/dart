@@ -73,8 +73,8 @@ class _HomeStored extends StatelessWidget {
         children: <Widget>[
           // Add TextFormFields and ElevatedButton here.
            MyTextFormField(
-                  label: 'Email | Username',
-                  hint: 'Enter your email',
+                  label: 'Product',
+                  hint: 'Enter Product description',
                   helperText: 'We will never share your email with anyone else.',),
         ],
       ),
