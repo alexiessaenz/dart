@@ -79,9 +79,9 @@ class _HomeIputsState extends State<_HomeIputs> {
               // maxHeight: MediaQuery.of(context).size.height * 0.5,
               maxWidth: MediaQuery.of(context).size.width*0.45),
              child:  MyTextFormField(
-                    label: 'Inputs',
-                    hint: 'Enter your new input',
-                    helperText: 'To input available products.',
+                    label: 'Prod id | name',
+                    hint: 'Enter your register',
+                    helperText: 'product id or name.',
                     // icon: Icons.add
                     ),
            ),
@@ -124,7 +124,7 @@ class _HomeIputsState extends State<_HomeIputs> {
           const SizedBox(
             height: 16,
           ),
-          const Text('Stored', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),textAlign:TextAlign.end),
+          const Text('Product Inputs ', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),textAlign:TextAlign.end),
           Container( clipBehavior: Clip.antiAlias,//cards semi square [ ]
             //height: 100,
             //margin: const EdgeInsets.symmetric(horizontal: 8),

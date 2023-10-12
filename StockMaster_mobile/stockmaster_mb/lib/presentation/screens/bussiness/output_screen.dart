@@ -3,6 +3,7 @@ import 'package:stockmaster_mb/presentation/screens/bussiness/stored_screen.dart
 import 'package:stockmaster_mb/presentation/widgets/data_table_container_widget.dart';
 import 'package:stockmaster_mb/presentation/widgets/side_menu.dart';
 import 'package:stockmaster_mb/presentation/widgets/text_form_field.dart';
+import 'package:animate_do/animate_do.dart';
 
 class OutputScreen extends StatelessWidget {
   static const String name = 'output_screen';
@@ -19,7 +20,7 @@ class OutputScreen extends StatelessWidget {
             title: const Row(
               children: [
                 SizedBox(width: 8),
-                Text('Input'),
+                Text('Output'),
               ],
             ),
             //automaticallyImplyLeading: false,
@@ -42,11 +43,17 @@ class OutputScreen extends StatelessWidget {
   }
 }
 
-class _HomeOutputs extends StatelessWidget {
+class _HomeOutputs extends StatefulWidget {
   const _HomeOutputs({
     super.key,
   });
 
+  @override
+  State<_HomeOutputs> createState() => _HomeOutputsState();
+}
+
+class _HomeOutputsState extends State<_HomeOutputs> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Container(padding: EdgeInsets.all(8), //padding
@@ -69,17 +76,78 @@ class _HomeOutputs extends StatelessWidget {
       child:  Column(
         children: <Widget>[
           // Add TextFormFields and ElevatedButton here.
-           MyTextFormField(
-                  label: 'Inputs',
-                  hint: 'Enter your new input',
-                  helperText: 'You are allowed only input available products.',),
+           const SizedBox(height: 16,),
+          Form(
+            // MyTextFormField(
+            //   hintText: 'Enter your email',
+            //   isEmail: true,
+            //   validator: (String value) {
+            //     if (!value.contains('@')) {
+            //       return 'Please enter a valid email';
+            //     }
+            //     return null;
+            //   },
+            // ),
+      //key: _formKey,
+      child:  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          // Add TextFormFields and ElevatedButton here.
+           Container(constraints: BoxConstraints( 
+              // maxHeight: MediaQuery.of(context).size.height * 0.5,
+              maxWidth: MediaQuery.of(context).size.width*0.45),
+             child:  MyTextFormField(
+                    label: 'Prod id | name',
+                    hint: 'Enter your register',
+                    helperText: 'product id or name.',
+                    // icon: Icons.add
+                    ),
+           ),
+          // Add TextFormFields and ElevatedButton here.
+           Container(constraints: BoxConstraints( 
+              // maxHeight: MediaQuery.of(context).size.height * 0.5,
+              maxWidth: MediaQuery.of(context).size.width*0.3),
+             child:  MyTextFormField(
+                    label: 'amount',
+                    hint: 'amount',
+                    helperText: 'more than 0',
+                    //icon: Icons.abc
+                    ),
+           ),
+          Container(padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
+            constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.2),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    child: FloatingActionButton.extended(extendedIconLabelSpacing: 2,
+                      extendedPadding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      onPressed: () {
+                        deflattedpushroute();
+                        //context.push('/stored-screen');
+                      },
+                      icon: isLoading
+                          ? SpinPerfect(
+                              infinite: true,
+                              child: const Icon(Icons.refresh_rounded))
+                          : FadeIn(child: const Icon(Icons.add)),
+                      label: const Text('New'),
+                    ),
+                  ),
+            ),
+            
+          
         ],
       ),
     ),
           const SizedBox(
             height: 16,
           ),
-          const Text('Stored', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),textAlign:TextAlign.end),
+        ],
+      ),
+    ),
+          const SizedBox(
+            height: 16,
+          ),
+          const Text('Products Outputs', style: TextStyle(color: Color.fromARGB(255, 97, 46, 155),fontSize: 24, fontWeight: FontWeight.bold),textAlign:TextAlign.end),
           Container( clipBehavior: Clip.antiAlias,//cards semi square [ ]
             //height: 100,
             //margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -116,6 +184,16 @@ class _HomeOutputs extends StatelessWidget {
         ],
       ),
     );
+  }
+
+    Future<void> deflattedpushroute() async {
+    isLoading = true;
+    setState(() { },);
+    await Future.delayed(const Duration(milliseconds: 750), () {
+        isLoading = false;
+        setState(() { },);
+        //context.push('/stored-screen');
+    });
   }
 }
  
