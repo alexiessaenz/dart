@@ -1,5 +1,4 @@
 import 'package:app_cine/domain/entities/movie.dart';
-import 'package:app_cine/domain/entities/movie.dart';
 import 'package:app_cine/infrastructure/models/moviedb/movie_moviedb.dart';
 
 class MovieMapper {
@@ -8,7 +7,7 @@ class MovieMapper {
       backdropPath: (moviedb.backdropPath != '') 
         ? 'https://image.tmdb.org/t/p/w500${ moviedb.backdropPath }'
         : 'https://sd.keepcalms.com/i-w600/keep-calm-poster-not-found.jpg',
-      genreIds: moviedb.genreIds.map((e) => e.toString()).toList(),
+      genreIds: moviedb.genreIds.map( (e) => e.toString() ).toList(),
       id: moviedb.id,
       originalLanguage: moviedb.originalLanguage,
       originalTitle: moviedb.originalTitle,
