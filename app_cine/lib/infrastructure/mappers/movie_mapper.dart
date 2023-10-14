@@ -1,5 +1,4 @@
 import 'package:app_cine/domain/entities/movie.dart';
-import 'package:app_cine/domain/entities/movie.dart';
 import 'package:app_cine/infrastructure/models/moviedb/movie_moviedb.dart';
 
 class MovieMapper {
