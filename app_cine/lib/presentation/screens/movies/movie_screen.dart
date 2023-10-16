@@ -62,26 +62,86 @@ class _MovieDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final textStyles = Theme.of(context).textTheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(padding: const EdgeInsets.all(8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: FadeInImage(
-                placeholder: const AssetImage('assets/no-image.jpg'),
-                image: NetworkImage(
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
                   movie.posterPath,
-                  width),
-                height: 150,
+                  width: size.width * 0.3,
+                ),
               ),
-            ),
+              SizedBox(
+                width: 10,
+              ),
+              SizedBox(
+                width: (size.width - 40) * 0.7,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      movie.title,
+                      style: textStyles.titleLarge,
+                    ),
+                    Text(movie.overview),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      Padding(
+        padding: const EdgeInsets.all(8),
+        child: Wrap(
+          children: [
+            ...movie.genreIds.map((gender) => Container(
+              margin: const EdgeInsets.only(right: 10),
+              child: Chip(label: Text(gender),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20)),
+              ),
+            ) )
           ],
-        ),)
+        ),
+        ),
+        _ActorsByMovie(movieId: movie.id).toString(),
+        const SizedBox(height: 50,)
       ],
+      
+    );
+  }
+}
+
+class _ActorsByMovie extends ConsumerWidget {
+  final String movieId;
+  const _ActorsByMovie({required this.movieId});
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final actorsByMovie = ref.watch(actorsByMovieProvider);
+
+    if (actorsByMovie[movieId] == null) {
+      return const CircularProgressIndicator(strokeWidth: 2,);
+    }
+
+    final actors = actorsByMovie[movieId]!;
+    return SizedBox(
+      height: 300,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: actors.length,
+        itemBuilder: (BuildContext context, int index) => Container(
+          padding: const EdgeInsets.all(8.8),
+          width: 135,
+          child:Columnn
+      ),
     );
   }
 }
