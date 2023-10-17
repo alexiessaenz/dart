@@ -1,0 +1,446 @@
+@startuml
+set namespaceSeparator ::
+
+class "cinemapedia::config::constants::environment.dart::Environment" {
+  {static} +String theMovieDbKey
+}
+
+class "cinemapedia::config::helpers::human_formats.dart::HumanFormats" {
+  {static} +String number()
+}
+
+class "cinemapedia::config::theme::app_theme.dart::AppTheme" {
+  +ThemeData getTheme()
+}
+
+abstract class "cinemapedia::domain::datasources::actors_datasource.dart::ActorsDatasource" {
+  +dynamic getActorsByMovie()
+}
+
+abstract class "cinemapedia::domain::datasources::movies_datasource.dart::MoviesDatasource" {
+  +dynamic getNowPlaying()
+  +dynamic getPopular()
+  +dynamic getUpcoming()
+  +dynamic getTopRated()
+  +dynamic getMovieById()
+  +dynamic searchMovies()
+}
+
+class "cinemapedia::domain::entities::actor.dart::Actor" {
+  +int id
+  +String name
+  +String profilePath
+  +String? character
+}
+
+class "cinemapedia::domain::entities::movie.dart::Movie" {
+  +bool adult
+  +String backdropPath
+  +List<String> genreIds
+  +int id
+  +String originalLanguage
+  +String originalTitle
+  +String overview
+  +double popularity
+  +String posterPath
+  +DateTime releaseDate
+  +String title
+  +bool video
+  +double voteAverage
+  +int voteCount
+}
+
+abstract class "cinemapedia::domain::repositories::actors_repository.dart::ActorsRepository" {
+  +dynamic getActorsByMovie()
+}
+
+abstract class "cinemapedia::domain::repositories::movies_repository.dart::MoviesRepository" {
+  +dynamic getNowPlaying()
+  +dynamic getPopular()
+  +dynamic getUpcoming()
+  +dynamic getTopRated()
+  +dynamic getMovieById()
+  +dynamic searchMovies()
+}
+
+class "cinemapedia::infrastructure::datasources::actor_moviedb_datasource.dart::ActorMovieDbDatasource" {
+  +Dio dio
+  +dynamic getActorsByMovie()
+}
+
+"cinemapedia::infrastructure::datasources::actor_moviedb_datasource.dart::ActorMovieDbDatasource" o-- "dio::src::dio.dart::Dio"
+"cinemapedia::domain::datasources::actors_datasource.dart::ActorsDatasource" <|-- "cinemapedia::infrastructure::datasources::actor_moviedb_datasource.dart::ActorMovieDbDatasource"
+
+class "cinemapedia::infrastructure::datasources::moviedb_datasource.dart::MoviedbDatasource" {
+  +Dio dio
+  -List<Movie> _jsonToMovies()
+  +dynamic getNowPlaying()
+  +dynamic getPopular()
+  +dynamic getTopRated()
+  +dynamic getUpcoming()
+  +dynamic getMovieById()
+  +dynamic searchMovies()
+}
+
+"cinemapedia::infrastructure::datasources::moviedb_datasource.dart::MoviedbDatasource" o-- "dio::src::dio.dart::Dio"
+"cinemapedia::domain::datasources::movies_datasource.dart::MoviesDatasource" <|-- "cinemapedia::infrastructure::datasources::moviedb_datasource.dart::MoviedbDatasource"
+
+class "cinemapedia::infrastructure::mappers::actor_mapper.dart::ActorMapper" {
+  {static} +Actor castToEntity()
+}
+
+class "cinemapedia::infrastructure::mappers::movie_mapper.dart::MovieMapper" {
+  {static} +Movie movieDBToEntity()
+  {static} +Movie movieDetailsToEntity()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::credits_response.dart::CreditsResponse" {
+  +int id
+  +List<Cast> cast
+  +List<Cast> crew
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::credits_response.dart::Cast" {
+  +bool adult
+  +int gender
+  +int id
+  +String knownForDepartment
+  +String name
+  +String originalName
+  +double popularity
+  +String? profilePath
+  +int? castId
+  +String? character
+  +String creditId
+  +int? order
+  +String? department
+  +String? job
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::moviedb_response.dart::MovieDbResponse" {
+  +Dates? dates
+  +int page
+  +List<MovieMovieDB> results
+  +int totalPages
+  +int totalResults
+  +Map<String, dynamic> toJson()
+}
+
+"cinemapedia::infrastructure::models::moviedb::moviedb_response.dart::MovieDbResponse" o-- "cinemapedia::infrastructure::models::moviedb::moviedb_response.dart::Dates"
+
+class "cinemapedia::infrastructure::models::moviedb::moviedb_response.dart::Dates" {
+  +DateTime maximum
+  +DateTime minimum
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::movie_details.dart::MovieDetails" {
+  +bool adult
+  +String backdropPath
+  +BelongsToCollection? belongsToCollection
+  +int budget
+  +List<Genre> genres
+  +String homepage
+  +int id
+  +String imdbId
+  +String originalLanguage
+  +String originalTitle
+  +String overview
+  +double popularity
+  +String posterPath
+  +List<ProductionCompany> productionCompanies
+  +List<ProductionCountry> productionCountries
+  +DateTime releaseDate
+  +int revenue
+  +int runtime
+  +List<SpokenLanguage> spokenLanguages
+  +String status
+  +String tagline
+  +String title
+  +bool video
+  +double voteAverage
+  +int voteCount
+  +Map<String, dynamic> toJson()
+}
+
+"cinemapedia::infrastructure::models::moviedb::movie_details.dart::MovieDetails" o-- "cinemapedia::infrastructure::models::moviedb::movie_details.dart::BelongsToCollection"
+
+class "cinemapedia::infrastructure::models::moviedb::movie_details.dart::BelongsToCollection" {
+  +int id
+  +String name
+  +String posterPath
+  +String backdropPath
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::movie_details.dart::Genre" {
+  +int id
+  +String name
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::movie_details.dart::ProductionCompany" {
+  +int id
+  +String? logoPath
+  +String name
+  +String originCountry
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::movie_details.dart::ProductionCountry" {
+  +String iso31661
+  +String name
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::movie_details.dart::SpokenLanguage" {
+  +String englishName
+  +String iso6391
+  +String name
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::models::moviedb::movie_moviedb.dart::MovieMovieDB" {
+  +bool adult
+  +String backdropPath
+  +List<int> genreIds
+  +int id
+  +String originalLanguage
+  +String originalTitle
+  +String overview
+  +double popularity
+  +String posterPath
+  +DateTime releaseDate
+  +String title
+  +bool video
+  +double voteAverage
+  +int voteCount
+  +Map<String, dynamic> toJson()
+}
+
+class "cinemapedia::infrastructure::repositories::actor_repository_impl.dart::ActorRepositoryImpl" {
+  +ActorsDatasource datasource
+  +dynamic getActorsByMovie()
+}
+
+"cinemapedia::infrastructure::repositories::actor_repository_impl.dart::ActorRepositoryImpl" o-- "cinemapedia::domain::datasources::actors_datasource.dart::ActorsDatasource"
+"cinemapedia::domain::repositories::actors_repository.dart::ActorsRepository" <|-- "cinemapedia::infrastructure::repositories::actor_repository_impl.dart::ActorRepositoryImpl"
+
+class "cinemapedia::infrastructure::repositories::movie_repository_impl.dart::MovieRepositoryImpl" {
+  +MoviesDatasource datasource
+  +dynamic getNowPlaying()
+  +dynamic getPopular()
+  +dynamic getTopRated()
+  +dynamic getUpcoming()
+  +dynamic getMovieById()
+  +dynamic searchMovies()
+}
+
+"cinemapedia::infrastructure::repositories::movie_repository_impl.dart::MovieRepositoryImpl" o-- "cinemapedia::domain::datasources::movies_datasource.dart::MoviesDatasource"
+"cinemapedia::domain::repositories::movies_repository.dart::MoviesRepository" <|-- "cinemapedia::infrastructure::repositories::movie_repository_impl.dart::MovieRepositoryImpl"
+
+class "cinemapedia::main.dart::MainApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::main.dart::MainApp"
+
+class "cinemapedia::presentation::delegates::search_movie_delegate.dart::SearchMovieDelegate" {
+  +dynamic Function(String) searchMovies
+  +List<Movie> initialMovies
+  +StreamController<List<Movie>> debouncedMovies
+  +StreamController<bool> isLoadingStream
+  -Timer? _debounceTimer
+  +void clearStreams()
+  -void _onQueryChanged()
+  +Widget buildResultsAndSuggestions()
+  +List<Widget>? buildActions()
+  +Widget? buildLeading()
+  +Widget buildResults()
+  +Widget buildSuggestions()
+}
+
+"cinemapedia::presentation::delegates::search_movie_delegate.dart::SearchMovieDelegate" o-- "cinemapedia::presentation::delegates::search_movie_delegate.dart::dynamic Function(String)"
+"cinemapedia::presentation::delegates::search_movie_delegate.dart::SearchMovieDelegate" o-- "dart::async::StreamController<List<Movie>>"
+"cinemapedia::presentation::delegates::search_movie_delegate.dart::SearchMovieDelegate" o-- "dart::async::StreamController<bool>"
+"cinemapedia::presentation::delegates::search_movie_delegate.dart::SearchMovieDelegate" o-- "dart::async::Timer"
+"flutter::src::material::search.dart::SearchDelegate" <|-- "cinemapedia::presentation::delegates::search_movie_delegate.dart::SearchMovieDelegate"
+
+class "cinemapedia::presentation::delegates::search_movie_delegate.dart::_MovieItem" {
+  +Movie movie
+  +Function onMovieSelected
+  +Widget build()
+}
+
+"cinemapedia::presentation::delegates::search_movie_delegate.dart::_MovieItem" o-- "cinemapedia::domain::entities::movie.dart::Movie"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::delegates::search_movie_delegate.dart::_MovieItem"
+
+class "cinemapedia::presentation::providers::actors::actors_by_movie_provider.dart::ActorsByMovieNotifier" {
+  +dynamic Function(String) getActors
+  +dynamic loadActors()
+}
+
+"cinemapedia::presentation::providers::actors::actors_by_movie_provider.dart::ActorsByMovieNotifier" o-- "cinemapedia::presentation::providers::actors::actors_by_movie_provider.dart::dynamic Function(String)"
+"state_notifier::state_notifier.dart::StateNotifier" <|-- "cinemapedia::presentation::providers::actors::actors_by_movie_provider.dart::ActorsByMovieNotifier"
+
+class "cinemapedia::presentation::providers::movies::movies_providers.dart::MoviesNotifier" {
+  +int currentPage
+  +bool isLoading
+  +dynamic Function({int page}) fetchMoreMovies
+  +dynamic loadNextPage()
+}
+
+"cinemapedia::presentation::providers::movies::movies_providers.dart::MoviesNotifier" o-- "cinemapedia::presentation::providers::movies::movies_providers.dart::dynamic Function({int page})"
+"state_notifier::state_notifier.dart::StateNotifier" <|-- "cinemapedia::presentation::providers::movies::movies_providers.dart::MoviesNotifier"
+
+class "cinemapedia::presentation::providers::movies::movie_info_provider.dart::MovieMapNotifier" {
+  +dynamic Function(String) getMovie
+  +dynamic loadMovie()
+}
+
+"cinemapedia::presentation::providers::movies::movie_info_provider.dart::MovieMapNotifier" o-- "cinemapedia::presentation::providers::movies::movie_info_provider.dart::dynamic Function(String)"
+"state_notifier::state_notifier.dart::StateNotifier" <|-- "cinemapedia::presentation::providers::movies::movie_info_provider.dart::MovieMapNotifier"
+
+class "cinemapedia::presentation::providers::search::search_movies_provider.dart::SearchedMoviesNotifier" {
+  +dynamic Function(String) searchMovie
+  +Ref<Object?> ref
+  +dynamic searchMoviesByQuery()
+}
+
+"cinemapedia::presentation::providers::search::search_movies_provider.dart::SearchedMoviesNotifier" o-- "cinemapedia::presentation::providers::search::search_movies_provider.dart::dynamic Function(String)"
+"cinemapedia::presentation::providers::search::search_movies_provider.dart::SearchedMoviesNotifier" o-- "riverpod::src::framework.dart::Ref<Object>"
+"state_notifier::state_notifier.dart::StateNotifier" <|-- "cinemapedia::presentation::providers::search::search_movies_provider.dart::SearchedMoviesNotifier"
+
+class "cinemapedia::presentation::screens::movies::home_screen.dart::HomeScreen" {
+  {static} +String name
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::screens::movies::home_screen.dart::HomeScreen"
+
+class "cinemapedia::presentation::screens::movies::home_screen.dart::_HomeView" {
+  +_HomeViewState createState()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerStatefulWidget" <|-- "cinemapedia::presentation::screens::movies::home_screen.dart::_HomeView"
+
+class "cinemapedia::presentation::screens::movies::home_screen.dart::_HomeViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerState" <|-- "cinemapedia::presentation::screens::movies::home_screen.dart::_HomeViewState"
+
+class "cinemapedia::presentation::screens::movies::movie_screen.dart::MovieScreen" {
+  {static} +String name
+  +String movieId
+  +MovieScreenState createState()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerStatefulWidget" <|-- "cinemapedia::presentation::screens::movies::movie_screen.dart::MovieScreen"
+
+class "cinemapedia::presentation::screens::movies::movie_screen.dart::MovieScreenState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerState" <|-- "cinemapedia::presentation::screens::movies::movie_screen.dart::MovieScreenState"
+
+class "cinemapedia::presentation::screens::movies::movie_screen.dart::_MovieDetails" {
+  +Movie movie
+  +Widget build()
+}
+
+"cinemapedia::presentation::screens::movies::movie_screen.dart::_MovieDetails" o-- "cinemapedia::domain::entities::movie.dart::Movie"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::screens::movies::movie_screen.dart::_MovieDetails"
+
+class "cinemapedia::presentation::screens::movies::movie_screen.dart::_ActorsByMovie" {
+  +String movieId
+  +Widget build()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerWidget" <|-- "cinemapedia::presentation::screens::movies::movie_screen.dart::_ActorsByMovie"
+
+class "cinemapedia::presentation::screens::movies::movie_screen.dart::_CustomSliverAppBar" {
+  +Movie movie
+  +Widget build()
+}
+
+"cinemapedia::presentation::screens::movies::movie_screen.dart::_CustomSliverAppBar" o-- "cinemapedia::domain::entities::movie.dart::Movie"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::screens::movies::movie_screen.dart::_CustomSliverAppBar"
+
+class "cinemapedia::presentation::widgets::movies::movies_slideshow.dart::MoviesSlideshow" {
+  +List<Movie> movies
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::widgets::movies::movies_slideshow.dart::MoviesSlideshow"
+
+class "cinemapedia::presentation::widgets::movies::movies_slideshow.dart::_Slide" {
+  +Movie movie
+  +Widget build()
+}
+
+"cinemapedia::presentation::widgets::movies::movies_slideshow.dart::_Slide" o-- "cinemapedia::domain::entities::movie.dart::Movie"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::widgets::movies::movies_slideshow.dart::_Slide"
+
+class "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::MovieHorizontalListview" {
+  +List<Movie> movies
+  +String? title
+  +String? subTitle
+  +void Function()? loadNextPage
+  +State<MovieHorizontalListview> createState()
+}
+
+"cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::MovieHorizontalListview" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::MovieHorizontalListview"
+
+class "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_MovieHorizontalListviewState" {
+  +ScrollController scrollController
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_MovieHorizontalListviewState" o-- "flutter::src::widgets::scroll_controller.dart::ScrollController"
+"flutter::src::widgets::framework.dart::State" <|-- "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_MovieHorizontalListviewState"
+
+class "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_Slide" {
+  +Movie movie
+  +Widget build()
+}
+
+"cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_Slide" o-- "cinemapedia::domain::entities::movie.dart::Movie"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_Slide"
+
+class "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_Title" {
+  +String? title
+  +String? subTitle
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::widgets::movies::movie_horizontal_listview.dart::_Title"
+
+class "cinemapedia::presentation::widgets::shared::custom_appbar.dart::CustomAppbar" {
+  +Widget build()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerWidget" <|-- "cinemapedia::presentation::widgets::shared::custom_appbar.dart::CustomAppbar"
+
+class "cinemapedia::presentation::widgets::shared::custom_bottom_navigation.dart::CustomBottomNavigation" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::widgets::shared::custom_bottom_navigation.dart::CustomBottomNavigation"
+
+class "cinemapedia::presentation::widgets::shared::full_screen_loader.dart::FullScreenLoader" {
+  +Stream<String> getLoadingMessages()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "cinemapedia::presentation::widgets::shared::full_screen_loader.dart::FullScreenLoader"
+
+
+@enduml
