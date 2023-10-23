@@ -1,0 +1,191 @@
+dart pub global run dcdg -b mermaid
+classDiagram
+class MenuItem
+MenuItem : +title String
+MenuItem : +subTitle String
+MenuItem : +link String
+MenuItem : +icon IconData
+MenuItem o-- IconData
+
+class AppTheme
+AppTheme : +selectedColor int
+AppTheme : +isDarkmode bool
+AppTheme : +getTheme() ThemeData
+AppTheme : +darkTheme() ThemeData
+AppTheme : -_appBarTheme() AppBarTheme
+AppTheme : +copyWith() AppTheme
+
+class MyApp
+MyApp : +build() Widget
+ConsumerWidget <|-- MyApp
+
+class Team
+Team : +position int
+Team : +name String
+Team : +product String
+Team : +points int
+Team : +played int
+Team : +won int
+Team : +drawn int
+Team : +lost int
+Team : +against int
+Team : +gd int
+
+class Team_adminusers
+Team_adminusers : +position int
+Team_adminusers : +name String
+Team_adminusers : +points String
+Team_adminusers : +played int
+Team_adminusers : +won String
+Team_adminusers : +drawn int
+Team_adminusers : +lost String
+Team_adminusers : +against int
+Team_adminusers : +gd int
+Team_adminusers : +valueNonBlocked double?
+Team_adminusers : +valueAdminGranted double?
+
+class ThemeNotifier
+ThemeNotifier : +toggleDarkmode() void
+ThemeNotifier : +changeColorIndex() void
+StateNotifier <|-- ThemeNotifier
+
+class InputScreen
+InputScreen : +name$ String
+InputScreen : +build() Widget
+StatelessWidget <|-- InputScreen
+
+class homeStoredW
+homeStoredW : +build() Widget
+StatelessWidget <|-- homeStoredW
+
+class AdminUsersScreen
+AdminUsersScreen : +name$ String
+AdminUsersScreen : +build() Widget
+StatelessWidget <|-- AdminUsersScreen
+
+class _HomeIputs
+_HomeIputs : +createState() State<_HomeIputs>
+StatefulWidget <|-- _HomeIputs
+
+class _HomeIputsState
+_HomeIputsState : +isLoading bool
+_HomeIputsState : +build() Widget
+_HomeIputsState : +deflattedpushroute() dynamic
+State <|-- _HomeIputsState
+
+class SignInScreen
+SignInScreen : +name$ String
+SignInScreen : +createState() State<SignInScreen>
+StatefulWidget <|-- SignInScreen
+
+class _SignInScreenState
+_SignInScreenState : +isLoading bool
+_SignInScreenState : +build() Widget
+_SignInScreenState : +deflattedpushroute() dynamic
+_SignInScreenState : -_textFormField() TextFormField
+State <|-- _SignInScreenState
+
+class InputScreen
+InputScreen : +name$ String
+InputScreen : +build() Widget
+StatelessWidget <|-- InputScreen
+
+class _HomeIputs
+_HomeIputs : +createState() State<_HomeIputs>
+StatefulWidget <|-- _HomeIputs
+
+class _HomeIputsState
+_HomeIputsState : +isLoading bool
+_HomeIputsState : +build() Widget
+_HomeIputsState : +deflattedpushroute() dynamic
+State <|-- _HomeIputsState
+
+class OutputScreen
+OutputScreen : +name$ String
+OutputScreen : +build() Widget
+StatelessWidget <|-- OutputScreen
+
+class _HomeOutputs
+_HomeOutputs : +createState() State<_HomeOutputs>
+StatefulWidget <|-- _HomeOutputs
+
+class _HomeOutputsState
+_HomeOutputsState : +isLoading bool
+_HomeOutputsState : +build() Widget
+_HomeOutputsState : +deflattedpushroute() dynamic
+State <|-- _HomeOutputsState
+
+class StoredScreen
+StoredScreen : +name$ String
+StoredScreen : +build() Widget
+StatelessWidget <|-- StoredScreen
+
+class _HomeStored
+_HomeStored : +build() Widget
+StatelessWidget <|-- _HomeStored
+
+class HomeScreen
+HomeScreen : +name$ String
+HomeScreen : +build() Widget
+StatelessWidget <|-- HomeScreen
+
+class HomeView
+HomeView : +build() Widget
+StatelessWidget <|-- HomeView
+
+class ProgressScreen
+ProgressScreen : +build() Widget
+StatelessWidget <|-- ProgressScreen
+
+class DataTableContainer_AdminUsers_Widget
+DataTableContainer_AdminUsers_Widget : +build() Widget
+StatelessWidget <|-- DataTableContainer_AdminUsers_Widget
+
+class FixedColumn_AdminUsers_Widget
+FixedColumn_AdminUsers_Widget : +build() Widget
+StatelessWidget <|-- FixedColumn_AdminUsers_Widget
+
+class ScrollableColumn_AdminUsers_Widget
+ScrollableColumn_AdminUsers_Widget : +createState() State<ScrollableColumn_AdminUsers_Widget>
+StatefulWidget <|-- ScrollableColumn_AdminUsers_Widget
+
+class _ScrollableColumn_AdminUsers_WidgetState
+_ScrollableColumn_AdminUsers_WidgetState : +build() Widget
+State <|-- _ScrollableColumn_AdminUsers_WidgetState
+
+class DataTableContainer
+DataTableContainer : +build() Widget
+StatelessWidget <|-- DataTableContainer
+
+class FixedColumnWidget
+FixedColumnWidget : +build() Widget
+StatelessWidget <|-- FixedColumnWidget
+
+class ScrollableColumnWidget
+ScrollableColumnWidget : +build() Widget
+StatelessWidget <|-- ScrollableColumnWidget
+
+class SideMenu
+SideMenu : +scaffoldKey GlobalKey~ScaffoldState~
+SideMenu o-- GlobalKey~ScaffoldState~
+SideMenu : +createState() State<SideMenu>
+StatefulWidget <|-- SideMenu
+
+class SideMenuState
+SideMenuState : +navDrawerIndex int
+SideMenuState : +build() Widget
+SideMenuState : +flatteredrouted() dynamic
+State <|-- SideMenuState
+
+class Isdark
+Isdark : +build() Widget
+ConsumerWidget <|-- Isdark
+
+class MyTextFormField
+MyTextFormField : +label String
+MyTextFormField : +hint String
+MyTextFormField : +helperText String
+MyTextFormField : +icon IconData?
+MyTextFormField o-- IconData
+MyTextFormField : +build() Widget
+StatelessWidget <|-- MyTextFormField

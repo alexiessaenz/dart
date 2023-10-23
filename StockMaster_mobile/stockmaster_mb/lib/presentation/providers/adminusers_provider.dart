@@ -1,5 +1,5 @@
 
-import 'package:stockmaster_mb/model/entities/team_adminusers.dart';
+import 'package:stockmaster_mb/domain/model/entities/team_adminusers.dart';
 
 List<Team_adminusers> teamsData = [
   Team_adminusers(position: 1,  name: '@AtleticoMadrid',  points: 'Non Locked', played: 5, won: 'Non Locked', drawn: 2, lost: 'User', against: 4,  gd: 3),
