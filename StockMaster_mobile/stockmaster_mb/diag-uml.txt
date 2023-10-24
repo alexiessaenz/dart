@@ -1,0 +1,262 @@
+@startuml
+set namespaceSeparator ::
+
+class "stockmaster_mb::config::menu::menu_items.dart::MenuItem" {
+  +String title
+  +String subTitle
+  +String link
+  +IconData icon
+}
+
+"stockmaster_mb::config::menu::menu_items.dart::MenuItem" o-- "flutter::src::widgets::icon_data.dart::IconData"
+
+class "stockmaster_mb::config::themes::app_theme.dart::AppTheme" {
+  +int selectedColor
+  +bool isDarkmode
+  +ThemeData getTheme()
+  +ThemeData darkTheme()
+  -AppBarTheme _appBarTheme()
+  +AppTheme copyWith()
+}
+
+class "stockmaster_mb::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerWidget" <|-- "stockmaster_mb::main.dart::MyApp"
+
+class "stockmaster_mb::model::entities::team.dart::Team" {
+  +int position
+  +String name
+  +String product
+  +int points
+  +int played
+  +int won
+  +int drawn
+  +int lost
+  +int against
+  +int gd
+}
+
+class "stockmaster_mb::model::entities::team_adminusers.dart::Team_adminusers" {
+  +int position
+  +String name
+  +String points
+  +int played
+  +String won
+  +int drawn
+  +String lost
+  +int against
+  +int gd
+  +double? valueNonBlocked
+  +double? valueAdminGranted
+}
+
+class "stockmaster_mb::presentation::providers::theme_provider.dart::ThemeNotifier" {
+  +void toggleDarkmode()
+  +void changeColorIndex()
+}
+
+"state_notifier::state_notifier.dart::StateNotifier" <|-- "stockmaster_mb::presentation::providers::theme_provider.dart::ThemeNotifier"
+
+class "stockmaster_mb::presentation::screens::admin::supplier_screen.dart::InputScreen" {
+  {static} +String name
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::admin::supplier_screen.dart::InputScreen"
+
+class "stockmaster_mb::presentation::screens::admin::supplier_screen.dart::homeStoredW" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::admin::supplier_screen.dart::homeStoredW"
+
+class "stockmaster_mb::presentation::screens::admin::users_grants_screen.dart::AdminUsersScreen" {
+  {static} +String name
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::admin::users_grants_screen.dart::AdminUsersScreen"
+
+class "stockmaster_mb::presentation::screens::admin::users_grants_screen.dart::_HomeIputs" {
+  +State<_HomeIputs> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "stockmaster_mb::presentation::screens::admin::users_grants_screen.dart::_HomeIputs"
+
+class "stockmaster_mb::presentation::screens::admin::users_grants_screen.dart::_HomeIputsState" {
+  +bool isLoading
+  +Widget build()
+  +dynamic deflattedpushroute()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "stockmaster_mb::presentation::screens::admin::users_grants_screen.dart::_HomeIputsState"
+
+class "stockmaster_mb::presentation::screens::auth::sign_in_screen.dart::SignInScreen" {
+  {static} +String name
+  +State<SignInScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "stockmaster_mb::presentation::screens::auth::sign_in_screen.dart::SignInScreen"
+
+class "stockmaster_mb::presentation::screens::auth::sign_in_screen.dart::_SignInScreenState" {
+  +bool isLoading
+  +Widget build()
+  +dynamic deflattedpushroute()
+  -TextFormField _textFormField()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "stockmaster_mb::presentation::screens::auth::sign_in_screen.dart::_SignInScreenState"
+
+class "stockmaster_mb::presentation::screens::bussiness::input_screen.dart::InputScreen" {
+  {static} +String name
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::bussiness::input_screen.dart::InputScreen"
+
+class "stockmaster_mb::presentation::screens::bussiness::input_screen.dart::_HomeIputs" {
+  +State<_HomeIputs> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "stockmaster_mb::presentation::screens::bussiness::input_screen.dart::_HomeIputs"
+
+class "stockmaster_mb::presentation::screens::bussiness::input_screen.dart::_HomeIputsState" {
+  +bool isLoading
+  +Widget build()
+  +dynamic deflattedpushroute()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "stockmaster_mb::presentation::screens::bussiness::input_screen.dart::_HomeIputsState"
+
+class "stockmaster_mb::presentation::screens::bussiness::output_screen.dart::OutputScreen" {
+  {static} +String name
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::bussiness::output_screen.dart::OutputScreen"
+
+class "stockmaster_mb::presentation::screens::bussiness::output_screen.dart::_HomeOutputs" {
+  +State<_HomeOutputs> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "stockmaster_mb::presentation::screens::bussiness::output_screen.dart::_HomeOutputs"
+
+class "stockmaster_mb::presentation::screens::bussiness::output_screen.dart::_HomeOutputsState" {
+  +bool isLoading
+  +Widget build()
+  +dynamic deflattedpushroute()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "stockmaster_mb::presentation::screens::bussiness::output_screen.dart::_HomeOutputsState"
+
+class "stockmaster_mb::presentation::screens::bussiness::stored_screen.dart::StoredScreen" {
+  {static} +String name
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::bussiness::stored_screen.dart::StoredScreen"
+
+class "stockmaster_mb::presentation::screens::bussiness::stored_screen.dart::_HomeStored" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::bussiness::stored_screen.dart::_HomeStored"
+
+class "stockmaster_mb::presentation::screens::home::home_screen.dart::HomeScreen" {
+  {static} +String name
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::home::home_screen.dart::HomeScreen"
+
+class "stockmaster_mb::presentation::screens::home::home_screen.dart::HomeView" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::home::home_screen.dart::HomeView"
+
+class "stockmaster_mb::presentation::screens::progress::progress_screen.dart::ProgressScreen" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::screens::progress::progress_screen.dart::ProgressScreen"
+
+class "stockmaster_mb::presentation::widgets::admin::adminuser_data_table_container_widget.dart::DataTableContainer_AdminUsers_Widget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::widgets::admin::adminuser_data_table_container_widget.dart::DataTableContainer_AdminUsers_Widget"
+
+class "stockmaster_mb::presentation::widgets::admin::adminuser_fixedcolumwidget.dart::FixedColumn_AdminUsers_Widget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::widgets::admin::adminuser_fixedcolumwidget.dart::FixedColumn_AdminUsers_Widget"
+
+class "stockmaster_mb::presentation::widgets::admin::adminuser_scrolablecolumn.dart::ScrollableColumn_AdminUsers_Widget" {
+  +State<ScrollableColumn_AdminUsers_Widget> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "stockmaster_mb::presentation::widgets::admin::adminuser_scrolablecolumn.dart::ScrollableColumn_AdminUsers_Widget"
+
+class "stockmaster_mb::presentation::widgets::admin::adminuser_scrolablecolumn.dart::_ScrollableColumn_AdminUsers_WidgetState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "stockmaster_mb::presentation::widgets::admin::adminuser_scrolablecolumn.dart::_ScrollableColumn_AdminUsers_WidgetState"
+
+class "stockmaster_mb::presentation::widgets::data_table_container_widget.dart::DataTableContainer" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::widgets::data_table_container_widget.dart::DataTableContainer"
+
+class "stockmaster_mb::presentation::widgets::fixedcolumwidget.dart::FixedColumnWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::widgets::fixedcolumwidget.dart::FixedColumnWidget"
+
+class "stockmaster_mb::presentation::widgets::scrolablecolumn.dart::ScrollableColumnWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::widgets::scrolablecolumn.dart::ScrollableColumnWidget"
+
+class "stockmaster_mb::presentation::widgets::side_menu.dart::SideMenu" {
+  +GlobalKey<ScaffoldState> scaffoldKey
+  +State<SideMenu> createState()
+}
+
+"stockmaster_mb::presentation::widgets::side_menu.dart::SideMenu" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "stockmaster_mb::presentation::widgets::side_menu.dart::SideMenu"
+
+class "stockmaster_mb::presentation::widgets::side_menu.dart::SideMenuState" {
+  +int navDrawerIndex
+  +Widget build()
+  +dynamic flatteredrouted()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "stockmaster_mb::presentation::widgets::side_menu.dart::SideMenuState"
+
+class "stockmaster_mb::presentation::widgets::side_menu.dart::Isdark" {
+  +Widget build()
+}
+
+"flutter_riverpod::src::consumer.dart::ConsumerWidget" <|-- "stockmaster_mb::presentation::widgets::side_menu.dart::Isdark"
+
+class "stockmaster_mb::presentation::widgets::text_form_field.dart::MyTextFormField" {
+  +String label
+  +String hint
+  +String helperText
+  +IconData? icon
+  +Widget build()
+}
+
+"stockmaster_mb::presentation::widgets::text_form_field.dart::MyTextFormField" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "stockmaster_mb::presentation::widgets::text_form_field.dart::MyTextFormField"
+
+
+@enduml
