@@ -1,4 +1,15 @@
 class Team {
+  final int position;
+  final String name;
+  final String product;
+  final int points;
+  final int played;
+  final int won;
+  final int drawn;
+  final int lost;
+  final int against;
+  final int gd;
+  
   Team({
     required this.position,
     required this.name,
@@ -11,15 +22,4 @@ class Team {
     required this.against,
     required this.gd,
   });
-
-  final int position;
-  final String name;
-  final String product;
-  final int points;
-  final int played;
-  final int won;
-  final int drawn;
-  final int lost;
-  final int against;
-  final int gd;
 }

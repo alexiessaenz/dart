@@ -1,5 +1,5 @@
 
-import 'package:stockmaster_mb/model/entities/team.dart';
+import 'package:stockmaster_mb/domain/entities/team.dart';
 
 List<Team> teamsData = [
   Team(position: 1,  product: 'Coca cola',           name: '@AMadrid345',      points: 11, played: 5, won: 3, drawn: 2, lost: 0, against: 4,  gd: 3),
