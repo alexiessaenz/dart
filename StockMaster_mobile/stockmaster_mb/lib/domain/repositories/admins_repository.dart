@@ -2,7 +2,7 @@ import 'package:stockmaster_mb/domain/entities/product_entity.dart';
 import 'package:stockmaster_mb/domain/entities/provider_entity.dart';
 import 'package:stockmaster_mb/domain/entities/user_entity.dart';
 
-abstract class AdminDataSource {
+abstract class AdminRepository {
   Future<List<User>> getUsers(); //users
   Future< bool > blockUsers();
   Future< bool > deleteUsers();
