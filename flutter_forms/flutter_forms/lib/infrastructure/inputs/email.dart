@@ -14,7 +14,7 @@ class Email extends FormzInput<String,EmailError> {
     if (isValid || isPure) return null;
 
     if (displayError == EmailError.empty) return 'Email is required';
-    if(displayError == EmailError.format) return 'Email format is invalid';
+    if(displayError == EmailError.format) return 'Email format is not valid';
     return null;
   }
 

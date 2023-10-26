@@ -1,10 +1,13 @@
 import 'package:formz/formz.dart';
-
+//define input validation errors
 enum PasswordError {empty,length,format}
 
+//extendformzImput and provider the input type and error type
 class Password extends FormzInput<String,PasswordError> {
+  //call super.pure to represent an unmodied forminput
   const Password.pure() : super.pure(''); //call super .pure to represent an unmodified form input
 
+  //call super dirty to represent a modified form input
   const Password.dirty(String value ) : super.dirty(value); //call super .dirty to represent a modified form input
 
   String? get errorMessage {
@@ -16,7 +19,7 @@ class Password extends FormzInput<String,PasswordError> {
     return null;
   }
 
-  @override
+  @override //override validador to handle validating a given input value
   PasswordError? validator(String value) {
     if (value.isEmpty|| value.trim().isEmpty) return PasswordError.empty;
     if (value.length < 8) return PasswordError.length;
