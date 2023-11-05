@@ -3,6 +3,13 @@
 
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_notificaciones/domain/entities/push_message.dart';
+import 'package:flutter_notificaciones/presentation/blocs/notifications/notifications_state.dart';
+import 'package:flutter_notificaciones/presentation/blocs/notifications/notifications_state.dart';
+
+import 'notifications_state.dart';
+//import 'package:flutter_notificaciones/presentation/blocs/notifications/notifications_state.dart';
 
 class NotificationsBloc extends Bloc<NotificatiosnEvent, NotificationsState>{
 
@@ -18,4 +25,6 @@ class NotificationsBloc extends Bloc<NotificatiosnEvent, NotificationsState>{
     //Listener para notificaciones en Foreground
     _onForegroundMessage();
   )
-}
+
+
+  PushMessage? getMessageById(String pushMessageId) {}}
