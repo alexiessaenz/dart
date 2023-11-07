@@ -1,0 +1,365 @@
+classDiagram
+class Environment
+Environment : +theMovieDbKey$ String
+
+class HumanFormats
+HumanFormats : +number()$ String
+
+class AppTheme
+AppTheme : +getTheme() ThemeData
+
+class ActorsDatasource
+<<abstract>> ActorsDatasource
+ActorsDatasource : +getActorsByMovie()* dynamic
+
+class MoviesDatasource
+<<abstract>> MoviesDatasource
+MoviesDatasource : +getNowPlaying()* dynamic
+MoviesDatasource : +getPopular()* dynamic
+MoviesDatasource : +getUpcoming()* dynamic
+MoviesDatasource : +getTopRated()* dynamic
+MoviesDatasource : +getMovieById()* dynamic
+MoviesDatasource : +searchMovies()* dynamic
+
+class Actor
+Actor : +id int
+Actor : +name String
+Actor : +profilePath String
+Actor : +character String?
+
+class Movie
+Movie : +adult bool
+Movie : +backdropPath String
+Movie : +genreIds List~String~
+Movie : +id int
+Movie : +originalLanguage String
+Movie : +originalTitle String
+Movie : +overview String
+Movie : +popularity double
+Movie : +posterPath String
+Movie : +releaseDate DateTime
+Movie : +title String
+Movie : +video bool
+Movie : +voteAverage double
+Movie : +voteCount int
+
+class ActorsRepository
+<<abstract>> ActorsRepository
+ActorsRepository : +getActorsByMovie()* dynamic
+
+class MoviesRepository
+<<abstract>> MoviesRepository
+MoviesRepository : +getNowPlaying()* dynamic
+MoviesRepository : +getPopular()* dynamic
+MoviesRepository : +getUpcoming()* dynamic
+MoviesRepository : +getTopRated()* dynamic
+MoviesRepository : +getMovieById()* dynamic
+MoviesRepository : +searchMovies()* dynamic
+
+class ActorMovieDbDatasource
+ActorMovieDbDatasource : +dio Dio
+ActorMovieDbDatasource o-- Dio
+ActorMovieDbDatasource : +getActorsByMovie() dynamic
+ActorsDatasource <|-- ActorMovieDbDatasource
+
+class MoviedbDatasource
+MoviedbDatasource : +dio Dio
+MoviedbDatasource o-- Dio
+MoviedbDatasource : -_jsonToMovies() List<Movie>
+MoviedbDatasource : +getNowPlaying() dynamic
+MoviedbDatasource : +getPopular() dynamic
+MoviedbDatasource : +getTopRated() dynamic
+MoviedbDatasource : +getUpcoming() dynamic
+MoviedbDatasource : +getMovieById() dynamic
+MoviedbDatasource : +searchMovies() dynamic
+MoviesDatasource <|-- MoviedbDatasource
+
+class ActorMapper
+ActorMapper : +castToEntity()$ Actor
+
+class MovieMapper
+MovieMapper : +movieDBToEntity()$ Movie
+MovieMapper : +movieDetailsToEntity()$ Movie
+
+class CreditsResponse
+CreditsResponse : +id int
+CreditsResponse : +cast List~Cast~
+CreditsResponse : +crew List~Cast~
+CreditsResponse : +toJson() Map<String, dynamic>
+
+class Cast
+Cast : +adult bool
+Cast : +gender int
+Cast : +id int
+Cast : +knownForDepartment String
+Cast : +name String
+Cast : +originalName String
+Cast : +popularity double
+Cast : +profilePath String?
+Cast : +castId int?
+Cast : +character String?
+Cast : +creditId String
+Cast : +order int?
+Cast : +department String?
+Cast : +job String?
+Cast : +toJson() Map<String, dynamic>
+
+class MovieDbResponse
+MovieDbResponse : +dates Dates?
+MovieDbResponse o-- Dates
+MovieDbResponse : +page int
+MovieDbResponse : +results List~MovieMovieDB~
+MovieDbResponse : +totalPages int
+MovieDbResponse : +totalResults int
+MovieDbResponse : +toJson() Map<String, dynamic>
+
+class Dates
+Dates : +maximum DateTime
+Dates : +minimum DateTime
+Dates : +toJson() Map<String, dynamic>
+
+class MovieDetails
+MovieDetails : +adult bool
+MovieDetails : +backdropPath String
+MovieDetails : +belongsToCollection BelongsToCollection?
+MovieDetails o-- BelongsToCollection
+MovieDetails : +budget int
+MovieDetails : +genres List~Genre~
+MovieDetails : +homepage String
+MovieDetails : +id int
+MovieDetails : +imdbId String
+MovieDetails : +originalLanguage String
+MovieDetails : +originalTitle String
+MovieDetails : +overview String
+MovieDetails : +popularity double
+MovieDetails : +posterPath String
+MovieDetails : +productionCompanies List~ProductionCompany~
+MovieDetails : +productionCountries List~ProductionCountry~
+MovieDetails : +releaseDate DateTime
+MovieDetails : +revenue int
+MovieDetails : +runtime int
+MovieDetails : +spokenLanguages List~SpokenLanguage~
+MovieDetails : +status String
+MovieDetails : +tagline String
+MovieDetails : +title String
+MovieDetails : +video bool
+MovieDetails : +voteAverage double
+MovieDetails : +voteCount int
+MovieDetails : +toJson() Map<String, dynamic>
+
+class BelongsToCollection
+BelongsToCollection : +id int
+BelongsToCollection : +name String
+BelongsToCollection : +posterPath String
+BelongsToCollection : +backdropPath String
+BelongsToCollection : +toJson() Map<String, dynamic>
+
+class Genre
+Genre : +id int
+Genre : +name String
+Genre : +toJson() Map<String, dynamic>
+
+class ProductionCompany
+ProductionCompany : +id int
+ProductionCompany : +logoPath String?
+ProductionCompany : +name String
+ProductionCompany : +originCountry String
+ProductionCompany : +toJson() Map<String, dynamic>
+
+class ProductionCountry
+ProductionCountry : +iso31661 String
+ProductionCountry : +name String
+ProductionCountry : +toJson() Map<String, dynamic>
+
+class SpokenLanguage
+SpokenLanguage : +englishName String
+SpokenLanguage : +iso6391 String
+SpokenLanguage : +name String
+SpokenLanguage : +toJson() Map<String, dynamic>
+
+class MovieMovieDB
+MovieMovieDB : +adult bool
+MovieMovieDB : +backdropPath String
+MovieMovieDB : +genreIds List~int~
+MovieMovieDB : +id int
+MovieMovieDB : +originalLanguage String
+MovieMovieDB : +originalTitle String
+MovieMovieDB : +overview String
+MovieMovieDB : +popularity double
+MovieMovieDB : +posterPath String
+MovieMovieDB : +releaseDate DateTime
+MovieMovieDB : +title String
+MovieMovieDB : +video bool
+MovieMovieDB : +voteAverage double
+MovieMovieDB : +voteCount int
+MovieMovieDB : +toJson() Map<String, dynamic>
+
+class ActorRepositoryImpl
+ActorRepositoryImpl : +datasource ActorsDatasource
+ActorRepositoryImpl o-- ActorsDatasource
+ActorRepositoryImpl : +getActorsByMovie() dynamic
+ActorsRepository <|-- ActorRepositoryImpl
+
+class MovieRepositoryImpl
+MovieRepositoryImpl : +datasource MoviesDatasource
+MovieRepositoryImpl o-- MoviesDatasource
+MovieRepositoryImpl : +getNowPlaying() dynamic
+MovieRepositoryImpl : +getPopular() dynamic
+MovieRepositoryImpl : +getTopRated() dynamic
+MovieRepositoryImpl : +getUpcoming() dynamic
+MovieRepositoryImpl : +getMovieById() dynamic
+MovieRepositoryImpl : +searchMovies() dynamic
+MoviesRepository <|-- MovieRepositoryImpl
+
+class MainApp
+MainApp : +build() Widget
+StatelessWidget <|-- MainApp
+
+class SearchMovieDelegate
+SearchMovieDelegate : +searchMovies dynamic FunctionString
+SearchMovieDelegate o-- dynamic FunctionString
+SearchMovieDelegate : +initialMovies List~Movie~
+SearchMovieDelegate : +debouncedMovies StreamController~List~Movie~~
+SearchMovieDelegate o-- StreamController~List~Movie~~
+SearchMovieDelegate : +isLoadingStream StreamController~bool~
+SearchMovieDelegate o-- StreamController~bool~
+SearchMovieDelegate : -_debounceTimer Timer?
+SearchMovieDelegate o-- Timer
+SearchMovieDelegate : +clearStreams() void
+SearchMovieDelegate : -_onQueryChanged() void
+SearchMovieDelegate : +buildResultsAndSuggestions() Widget
+SearchMovieDelegate : +buildActions() List<Widget>?
+SearchMovieDelegate : +buildLeading() Widget?
+SearchMovieDelegate : +buildResults() Widget
+SearchMovieDelegate : +buildSuggestions() Widget
+SearchDelegate <|-- SearchMovieDelegate
+
+class _MovieItem
+_MovieItem : +movie Movie
+_MovieItem o-- Movie
+_MovieItem : +onMovieSelected Function
+_MovieItem : +build() Widget
+StatelessWidget <|-- _MovieItem
+
+class ActorsByMovieNotifier
+ActorsByMovieNotifier : +getActors dynamic FunctionString
+ActorsByMovieNotifier o-- dynamic FunctionString
+ActorsByMovieNotifier : +loadActors() dynamic
+StateNotifier <|-- ActorsByMovieNotifier
+
+class MoviesNotifier
+MoviesNotifier : +currentPage int
+MoviesNotifier : +isLoading bool
+MoviesNotifier : +fetchMoreMovies dynamic Function{int page}
+MoviesNotifier o-- dynamic Function{int page}
+MoviesNotifier : +loadNextPage() dynamic
+StateNotifier <|-- MoviesNotifier
+
+class MovieMapNotifier
+MovieMapNotifier : +getMovie dynamic FunctionString
+MovieMapNotifier o-- dynamic FunctionString
+MovieMapNotifier : +loadMovie() dynamic
+StateNotifier <|-- MovieMapNotifier
+
+class SearchedMoviesNotifier
+SearchedMoviesNotifier : +searchMovie dynamic FunctionString
+SearchedMoviesNotifier o-- dynamic FunctionString
+SearchedMoviesNotifier : +ref Ref~Object?~
+SearchedMoviesNotifier o-- Ref~Object~
+SearchedMoviesNotifier : +searchMoviesByQuery() dynamic
+StateNotifier <|-- SearchedMoviesNotifier
+
+class HomeScreen
+HomeScreen : +name$ String
+HomeScreen : +build() Widget
+StatelessWidget <|-- HomeScreen
+
+class _HomeView
+_HomeView : +createState() _HomeViewState
+ConsumerStatefulWidget <|-- _HomeView
+
+class _HomeViewState
+_HomeViewState : +initState() void
+_HomeViewState : +build() Widget
+ConsumerState <|-- _HomeViewState
+
+class MovieScreen
+MovieScreen : +name$ String
+MovieScreen : +movieId String
+MovieScreen : +createState() MovieScreenState
+ConsumerStatefulWidget <|-- MovieScreen
+
+class MovieScreenState
+MovieScreenState : +initState() void
+MovieScreenState : +build() Widget
+ConsumerState <|-- MovieScreenState
+
+class _MovieDetails
+_MovieDetails : +movie Movie
+_MovieDetails o-- Movie
+_MovieDetails : +build() Widget
+StatelessWidget <|-- _MovieDetails
+
+class _ActorsByMovie
+_ActorsByMovie : +movieId String
+_ActorsByMovie : +build() Widget
+ConsumerWidget <|-- _ActorsByMovie
+
+class _CustomSliverAppBar
+_CustomSliverAppBar : +movie Movie
+_CustomSliverAppBar o-- Movie
+_CustomSliverAppBar : +build() Widget
+StatelessWidget <|-- _CustomSliverAppBar
+
+class MoviesSlideshow
+MoviesSlideshow : +movies List~Movie~
+MoviesSlideshow : +build() Widget
+StatelessWidget <|-- MoviesSlideshow
+
+class _Slide
+_Slide : +movie Movie
+_Slide o-- Movie
+_Slide : +build() Widget
+StatelessWidget <|-- _Slide
+
+class MovieHorizontalListview
+MovieHorizontalListview : +movies List~Movie~
+MovieHorizontalListview : +title String?
+MovieHorizontalListview : +subTitle String?
+MovieHorizontalListview : +loadNextPage void Function?
+MovieHorizontalListview o-- void Function
+MovieHorizontalListview : +createState() State<MovieHorizontalListview>
+StatefulWidget <|-- MovieHorizontalListview
+
+class _MovieHorizontalListviewState
+_MovieHorizontalListviewState : +scrollController ScrollController
+_MovieHorizontalListviewState o-- ScrollController
+_MovieHorizontalListviewState : +initState() void
+_MovieHorizontalListviewState : +dispose() void
+_MovieHorizontalListviewState : +build() Widget
+State <|-- _MovieHorizontalListviewState
+
+class _Slide
+_Slide : +movie Movie
+_Slide o-- Movie
+_Slide : +build() Widget
+StatelessWidget <|-- _Slide
+
+class _Title
+_Title : +title String?
+_Title : +subTitle String?
+_Title : +build() Widget
+StatelessWidget <|-- _Title
+
+class CustomAppbar
+CustomAppbar : +build() Widget
+ConsumerWidget <|-- CustomAppbar
+
+class CustomBottomNavigation
+CustomBottomNavigation : +build() Widget
+StatelessWidget <|-- CustomBottomNavigation
+
+class FullScreenLoader
+FullScreenLoader : +getLoadingMessages() Stream<String>
+FullScreenLoader : +build() Widget
+StatelessWidget <|-- FullScreenLoader

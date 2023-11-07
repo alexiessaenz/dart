@@ -1,5 +1,9 @@
 
-import 'package:stockmaster_mb/model/entities/team.dart';
+<<<<<<< HEAD
+import 'package:stockmaster_mb/domain/entities/team.dart';
+=======
+import 'package:stockmaster_mb/domain/model/entities/team.dart';
+>>>>>>> 218260db471b760a5436c6796e108a0b61462502
 
 List<Team> teamsData = [
   Team(position: 1,  product: 'Coca cola',           name: '@AMadrid345',      points: 11, played: 5, won: 3, drawn: 2, lost: 0, against: 4,  gd: 3),
