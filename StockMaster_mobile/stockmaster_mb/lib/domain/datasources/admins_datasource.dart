@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-abstract class AdminsDataSource {
 
-=======
 import 'package:stockmaster_mb/domain/entities/product_entity.dart';
 import 'package:stockmaster_mb/domain/entities/provider_entity.dart';
 import 'package:stockmaster_mb/domain/entities/user_entity.dart';
@@ -18,5 +15,4 @@ abstract class AdminDataSource {
   Future<List<Provider>> getProviders(); //providers
   Future< bool > createProvider(); 
   Future< bool > deleteProvider(); 
->>>>>>> 2ceed1069df12331059cdf10227d9e59999130fd
 }
