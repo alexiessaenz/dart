@@ -103,12 +103,12 @@ class LoginFormState {
   @override
   String toString() {
     return '''
-  LoginFormState:
-    isPosting: $isPosting
-    isFormPosted: $isFormPosted
-    isValid: $isValid
-    email: $email
-    password: $password
-''';
+      LoginFormState:
+      isPosting: $isPosting
+      isFormPosted: $isFormPosted
+      isValid: $isValid
+      email: $email
+      password: $password
+    ''';
   }
 }
