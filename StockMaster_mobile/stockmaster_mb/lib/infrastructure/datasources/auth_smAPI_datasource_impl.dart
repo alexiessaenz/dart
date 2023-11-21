@@ -14,7 +14,7 @@ class AuthSmApiDatasourceImpl extends AuthDataSource {
     }
   ));
 
-  Token _jsonToToken( Map<String,dynamic> json ) {
+  Future<Token> _jsonToToken( Map<String,dynamic> json ) {
 
     final movieDBResponse = MovieDbResponse.fromJson(json);
 
